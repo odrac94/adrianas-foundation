@@ -1,0 +1,272 @@
+---
+import { Image } from 'astro:assets'
+import founderImg from '../../assets/adriana-gallardo-founder.png'
+---
+
+<section class="founder" aria-labelledby="founder-heading">
+  <div class="founder-container">
+
+    <div class="founder-layout">
+
+      <!-- Column 1: Photo -->
+      <div class="founder-photo-col" data-animate="fade-right">
+        <div class="founder-photo-frame">
+          <Image
+            src={founderImg}
+            alt="Adriana Gallardo, Founder of Adriana's Foundation"
+            class="founder-photo"
+            width={480}
+            height={600}
+            loading="lazy"
+            format="webp"
+            quality={85}
+          />
+          <!-- Gold offset border -->
+          <div class="founder-photo-accent" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- Column 2: Name + title (sticky visual anchor) -->
+      <div class="founder-name-col" data-animate="fade-up" data-delay="0.1">
+        <div class="founder-label">Our Founder</div>
+        <h2 id="founder-heading" class="founder-heading">
+          Adriana<br />Gallardo
+        </h2>
+        <div class="founder-title">
+          Entrepreneur<br />
+          Business Coach<br />
+          International Speaker
+        </div>
+        <div class="founder-rule" aria-hidden="true"></div>
+        <p class="founder-tagline">
+          Access creates opportunity.<br />
+          Opportunity creates leaders.
+        </p>
+      </div>
+
+      <!-- Column 3: Bio -->
+      <div class="founder-bio-col" data-animate="fade-left" data-delay="0.2">
+        <p class="founder-bio">
+          Adriana Gallardo's journey is one of resilience, faith, and purpose.
+          Rising from nothing to becoming a successful entrepreneur, business coach,
+          and international speaker — proud of her Latinx roots.
+        </p>
+        <p class="founder-bio">
+          Adriana created Adriana's Foundation with a simple belief:
+          <strong>true success is meant to be shared.</strong>
+        </p>
+        <p class="founder-bio">
+          The Foundation exists to ensure that when one person rises,
+          the community rises with them, so we can all grow together.
+        </p>
+
+        <!-- Nonprofit info -->
+        <div class="founder-nonprofit">
+          <div class="founder-nonprofit-badge" aria-label="501(c)(3) Nonprofit">
+            <span aria-hidden="true">✦</span>
+            <span>Registered 501(c)(3) Nonprofit Organization</span>
+          </div>
+          <p class="founder-nonprofit-text">
+            Dedicated to empowering Latino youth and women through education,
+            mentorship, and career development. Rooted in real-world experience
+            and a deep commitment to community uplift and economic mobility.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .founder {
+    background: rgba(233, 173, 0, 0.15);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative circle — removed */
+  .founder::before {
+    display: none;
+  }
+
+  .founder-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── 3-column grid ── */
+  .founder-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr 1.4fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  /* ── Column 1: Photo ── */
+  .founder-photo-col {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .founder-photo-frame {
+    position: relative;
+    width: 100%;
+  }
+
+  .founder-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    position: relative;
+    z-index: 2;
+    mask-image: linear-gradient(
+      black 70%, 
+      transparent
+    )
+  }
+
+  /* Gold offset border behind photo */
+  .founder-photo-accent {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #E9AD00;
+    border-radius: 0.75rem;
+    transform: translate(10px, 10px);
+    z-index: 1;
+    opacity: 0.45;
+  }
+
+
+
+  /* ── Column 2: Name ── */
+  .founder-label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #06579A;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+  }
+
+  .founder-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    font-weight: 900;
+    color: #000000;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.25rem;
+  }
+
+  .founder-title {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .founder-rule {
+    width: 2.5rem;
+    height: 2px;
+    background: #E9AD00;
+    margin: 2rem 0;
+  }
+
+  .founder-tagline {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: 1.125rem;
+    color: #06579A;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Column 3: Bio ── */
+  .founder-bio {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    color: rgba(0, 0, 0, 0.75);
+    line-height: 1.75;
+    margin: 0 0 1.25rem;
+  }
+
+  .founder-bio strong {
+    color: #000000;
+    font-weight: 600;
+  }
+
+  .founder-nonprofit {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(233, 173, 0, 0.15);
+    border: 1px solid rgba(233, 173, 0, 0.3);
+    border-radius: 0.5rem;
+  }
+
+  .founder-nonprofit-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #E9AD00;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .founder-nonprofit-text {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1200px) {
+    .founder-layout {
+      grid-template-columns: 300px 1fr 1.2fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .founder-layout {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    /* Photo spans full height on left */
+    .founder-photo-col {
+      grid-row: span 2;
+      position: static;
+    }
+
+    .founder-bio-col {
+      grid-column: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .founder-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .founder-photo-col {
+      grid-row: auto;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  }
+</style>

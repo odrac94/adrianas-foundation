@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors */
+  --color-bg-dark: #0A1F2D;
+  --color-bg-light: #e9ad0014;
+  --color-gold: #E9AD00;
+  --color-terracotta: #06579A;
+  --color-text-light: #FFFFFF;
+  --color-text-dark: #000000;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+
+  /* Fonts */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-accent: 'Libre Baskerville', Georgia, serif;
+
+  /* Spacing */
+  --spacing-section: 6rem;
+
+  /* Border radius */
+  --radius-card: 0.5rem;
+}
+
+/* Base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #FFFFFF;
+  color: var(--color-text-light);
+  margin: 0;
+  padding: 0;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}

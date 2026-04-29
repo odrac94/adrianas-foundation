@@ -1,0 +1,250 @@
+---
+import { Image } from 'astro:assets'
+// import mentorshipPhoto from '../../assets/adrianas-what-we.png'
+import mentorshipPhoto from '../../assets/1hero.webp'
+---
+
+<section class="whatwedo" aria-labelledby="whatwedo-heading">
+  <div class="whatwedo-container">
+
+    <div class="whatwedo-layout">
+      <!-- Left: label + heading -->
+      <div class="whatwedo-left" data-animate="fade-right">
+        <div class="whatwedo-label" aria-hidden="true">What We Do</div>
+        <h2 id="whatwedo-heading" class="whatwedo-heading">
+          Bridging the gap between<br />
+          <em>potential</em> and profession
+        </h2>
+        <a href="/programs-v2" class="whatwedo-cta">
+          See All Programs
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <!-- Mentorship photo -->
+        <div class="whatwedo-photo">
+          <Image
+            src={mentorshipPhoto}
+            alt="Mentorship session at Adriana's Foundation"
+            class="whatwedo-photo-img"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Right: content -->
+      <div class="whatwedo-right" data-animate="fade-left" data-delay="0.15">
+        <p class="whatwedo-text">
+          We provide structured mentorship, life-skills training, professional certifications,
+          and direct job placement to prepare participants for sustainable careers.
+        </p>
+        <p class="whatwedo-text">
+          Our programs bridge the gap between potential and profession by equipping individuals
+          with the skills, confidence, and access needed to compete and lead in today's workforce.
+        </p>
+
+        <!-- Problem statement callout -->
+        <blockquote class="whatwedo-callout">
+          <p>
+            Too many talented individuals are held back not by lack of ability,
+            but by lack of opportunity, guidance, and preparation.
+          </p>
+          <footer>
+            <cite>— Adriana's Foundation Problem Statement</cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <!-- Three pillars -->
+    <div class="whatwedo-pillars" aria-label="Program pillars" data-animate="stagger">
+      <div class="whatwedo-pillar">
+        <div class="whatwedo-pillar-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9.5 5.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0" /><path d="M12 21.368l5.095 -5.096a3.088 3.088 0 1 0 -4.367 -4.367l-.728 .727l-.728 -.727a3.088 3.088 0 1 0 -4.367 4.367l5.095 5.096" /></svg>
+        </div>
+        <h3 class="whatwedo-pillar-title">Community Give-Back</h3>
+        <p class="whatwedo-pillar-text">Free celebrations creating inclusive spaces for families to connect.</p>
+      </div>
+      <div class="whatwedo-pillar">
+        <div class="whatwedo-pillar-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg>
+        </div>
+        <h3 class="whatwedo-pillar-title">Youth Empowerment</h3>
+        <p class="whatwedo-pillar-text">Mentorship, scholarships, and essential resources for students in need.</p>
+      </div>
+      <div class="whatwedo-pillar">
+        <div class="whatwedo-pillar-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0" /><path d="M10.5 11h2.5l-1.5 5" /></svg>
+        </div>
+        <h3 class="whatwedo-pillar-title">Family Access</h3>
+        <p class="whatwedo-pillar-text">Seasonal drives delivering food, clothing, and vital resources year-round.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .whatwedo {
+    background: #0A1F2D;
+    padding: 6rem 0;
+    position: relative;
+  }
+
+  .whatwedo-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .whatwedo-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+    margin-bottom: 5rem;
+  }
+
+  .whatwedo-label {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #E9AD00;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+
+  .whatwedo-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin: 0 0 2rem;
+  }
+
+  .whatwedo-heading em {
+    font-style: italic;
+    color: #E9AD00;
+  }
+
+  .whatwedo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #E9AD00;
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .whatwedo-cta:hover { gap: 0.75rem; }
+
+  .whatwedo-photo {
+    margin-top: 2rem;
+    border-radius: 0.625rem;
+    overflow: hidden;
+  }
+
+  .whatwedo-photo-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    opacity: 0.85;
+  }
+
+  .whatwedo-text {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.75;
+    margin: 0 0 1.25rem;
+  }
+
+  .whatwedo-callout {
+    margin: 2rem 0 0;
+    padding: 1.5rem;
+    border-left: 3px solid #06579A;
+    background: rgba(6, 87, 154, 0.15);
+    border-radius: 0 0.375rem 0.375rem 0;
+  }
+
+  .whatwedo-callout p {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.65;
+    margin: 0 0 0.75rem;
+  }
+
+  .whatwedo-callout cite {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.75rem;
+    color: #E9AD00;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Pillars */
+  .whatwedo-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .whatwedo-pillar {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .whatwedo-pillar:hover {
+    border-color: rgba(233, 173, 0, 0.2);
+    background: rgba(233, 173, 0, 0.03);
+  }
+
+  .whatwedo-pillar-icon {
+    font-size: 1.25rem;
+    color: #E9AD00;
+    margin-bottom: 1rem;
+  }
+
+  .whatwedo-pillar-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.75rem;
+  }
+
+  .whatwedo-pillar-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .whatwedo-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .whatwedo-pillars { grid-template-columns: 1fr; }
+  }
+</style>

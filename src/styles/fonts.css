@@ -1,0 +1,18 @@
+/* Playfair Display — display/headline font */
+@import '@fontsource/playfair-display/latin-400.css';
+@import '@fontsource/playfair-display/latin-700.css';
+@import '@fontsource/playfair-display/latin-900.css';
+
+/* DM Sans — body font */
+@import '@fontsource/dm-sans/latin-400.css';
+@import '@fontsource/dm-sans/latin-500.css';
+@import '@fontsource/dm-sans/latin-700.css';
+
+/* Libre Baskerville — accent/quote font */
+@import '@fontsource/libre-baskerville/latin-400.css';
+@import '@fontsource/libre-baskerville/latin-400-italic.css';
+@import '@fontsource/libre-baskerville/latin-700.css';
+
+/* Cormorant Garamond — alternate display font */
+@import '@fontsource/cormorant-garamond/latin-400.css';
+@import '@fontsource/cormorant-garamond/latin-600.css';

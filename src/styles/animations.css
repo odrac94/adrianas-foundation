@@ -1,0 +1,62 @@
+/* ─────────────────────────────────────────
+   Scroll-triggered entrance animations
+   Usage: add data-animate="[type]" to any element
+   Types: fade-up | fade-in | fade-left | fade-right | scale-up | stagger
+   Optional: data-delay="0.2" (seconds)
+   ───────────────────────────────────────── */
+
+/* Base: hidden state */
+[data-animate] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 0.7s;
+  transition-delay: var(--anim-delay, 0s);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Initial transforms per type */
+[data-animate="fade-up"]    { transform: translateY(32px); }
+[data-animate="fade-down"]  { transform: translateY(-24px); }
+[data-animate="fade-left"]  { transform: translateX(32px); }
+[data-animate="fade-right"] { transform: translateX(-32px); }
+[data-animate="fade-in"]    { transform: none; }
+[data-animate="scale-up"]   { transform: scale(0.92); }
+
+/* Stagger children — parent gets data-animate="stagger" */
+[data-animate="stagger"] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 0.6s;
+}
+
+/* Visible state — added by IntersectionObserver */
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+[data-animate="stagger"].is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Auto stagger delays for children (up to 8) */
+[data-animate="stagger"].is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+[data-animate="stagger"].is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+[data-animate="stagger"].is-visible > *:nth-child(3) { transition-delay: 0.19s; }
+[data-animate="stagger"].is-visible > *:nth-child(4) { transition-delay: 0.26s; }
+[data-animate="stagger"].is-visible > *:nth-child(5) { transition-delay: 0.33s; }
+[data-animate="stagger"].is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+[data-animate="stagger"].is-visible > *:nth-child(7) { transition-delay: 0.47s; }
+[data-animate="stagger"].is-visible > *:nth-child(8) { transition-delay: 0.54s; }

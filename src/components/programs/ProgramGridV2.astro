@@ -1,0 +1,73 @@
+---
+import type { Program } from '../../types/index'
+import ProgramCardV2 from './ProgramCardV2.astro'
+
+interface Props {
+  programs: Program[]
+}
+
+const { programs } = Astro.props
+---
+
+<div class="pgrid-v2">
+  <!-- Intro -->
+  <div class="pgrid-v2-intro" data-animate="fade-up">
+    <p class="pgrid-v2-description">
+      Funded through private sponsorships, community partnerships, and in-kind contributions.
+      <strong>100% of proceeds</strong> are reinvested into programs that directly benefit the communities we serve.
+    </p>
+  </div>
+
+  <!-- Grid — uniform cards, no expand -->
+  <div class="pgrid-v2-grid" role="list" aria-label="All programs">
+    {programs.map((program) => (
+      <div role="listitem">
+        <ProgramCardV2 program={program} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .pgrid-v2 {
+    width: 100%;
+  }
+
+  .pgrid-v2-intro {
+    margin-bottom: 3rem;
+  }
+
+  .pgrid-v2-description {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 640px;
+  }
+
+  .pgrid-v2-description strong {
+    color: #E9AD00;
+    font-weight: 600;
+  }
+
+  .pgrid-v2-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* All cards same size — no featured span */
+
+  @media (max-width: 1024px) {
+    .pgrid-v2-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pgrid-v2-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,102 @@
+---
+import type { Program } from '../../types/index'
+import ProgramCard from './ProgramCard.astro'
+
+interface Props {
+  programs: Program[]
+}
+
+const { programs } = Astro.props
+
+// First program gets featured (spans 2 cols)
+const featuredProgram = programs[0]
+const regularPrograms = programs.slice(1)
+---
+
+<div class="program-grid-wrapper">
+  <!-- Intro -->
+  <div class="program-grid-intro">
+    <p class="program-grid-description">
+      Funded through private sponsorships, community partnerships, and in-kind contributions.
+      <strong>100% of proceeds</strong> are reinvested into programs that directly benefit the communities we serve.
+    </p>
+  </div>
+
+  <!-- Grid -->
+  <div class="program-grid" role="list" aria-label="All programs">
+    <!-- Featured first program -->
+    <div role="listitem">
+      <ProgramCard program={featuredProgram} featured={true} />
+    </div>
+
+    <!-- Remaining programs -->
+    {regularPrograms.map((program) => (
+      <div role="listitem">
+        <ProgramCard program={program} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .program-grid-wrapper {
+    width: 100%;
+  }
+
+  .program-grid-intro {
+    margin-bottom: 3rem;
+  }
+
+  .program-grid-label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #06579A;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+  }
+
+  .program-grid-description {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 640px;
+  }
+
+  .program-grid-description strong {
+    color: #E9AD00;
+    font-weight: 600;
+  }
+
+  .program-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Featured card spans 2 columns */
+  .program-grid > div:first-child {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 1024px) {
+    .program-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .program-grid > div:first-child {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .program-grid {
+      grid-template-columns: 1fr;
+    }
+    .program-grid > div:first-child {
+      grid-column: span 1;
+    }
+  }
+</style>

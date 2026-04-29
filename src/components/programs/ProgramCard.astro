@@ -1,0 +1,283 @@
+---
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+import type { Program } from '../../types/index'
+
+interface Props {
+  program: Program
+  featured?: boolean
+}
+
+const { program, featured = false } = Astro.props
+
+const categoryColors: Record<string, string> = {
+  mentorship: '#E9AD00',
+  sports: '#06579A',
+  community: '#06579A',
+  partnership: '#0D3456'
+}
+
+const categoryLabels: Record<string, string> = {
+  mentorship: 'Mentorship',
+  sports: 'Sports',
+  community: 'Community',
+  partnership: 'Partnership'
+}
+
+const accentColor = categoryColors[program.category] ?? '#E9AD00'
+const categoryLabel = categoryLabels[program.category] ?? program.category
+const imageIsString = typeof program.image === 'string'
+const imageSrc = program.image
+---
+
+<article
+  id={program.id}
+  class={`program-card ${featured ? 'program-card--featured' : ''}`}
+  style={`--accent: ${accentColor}`}
+  tabindex="0"
+  aria-label={program.title}
+  data-animate="scale-up"
+>
+  <!-- Program thumbnail -->
+  {imageSrc && imageIsString ? (
+    <div class="program-card-thumb">
+      <img
+        src={imageSrc as string}
+        alt={program.title}
+        class="program-card-thumb-img"
+        width="400"
+        height="250"
+        loading="lazy"
+      />
+    </div>
+  ) : imageSrc ? (
+    <div class="program-card-thumb">
+      <Image
+        src={imageSrc as ImageMetadata}
+        alt={program.title}
+        class="program-card-thumb-img"
+        width={400}
+        height={250}
+        loading="lazy"
+      />
+    </div>
+  ) : null}
+
+  <!-- Category badge -->
+  <div class="program-card-category" aria-label={`Category: ${categoryLabel}`}>
+    {categoryLabel}
+  </div>
+
+  <!-- Default visible content -->
+  <h3 class="program-card-title">{program.title}</h3>
+  <p class="program-card-tagline">{program.tagline}</p>
+
+  <!-- Expandable content (CSS :hover / :focus-within) -->
+  <div class="program-card-expand" aria-hidden="true">
+    <p class="program-card-description">{program.description}</p>
+
+    {program.goals.length > 0 && (
+      <div class="program-card-section">
+        <div class="program-card-section-title">Goals</div>
+        <ul class="program-card-list" role="list">
+          {program.goals.slice(0, 3).map((goal) => (
+            <li class="program-card-list-item">{goal}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+
+  <!-- Chevron indicator -->
+  <div class="program-card-chevron" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- Accent border (bottom) -->
+  <div class="program-card-accent-bar" aria-hidden="true"></div>
+</article>
+
+<style>
+  .program-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    padding: 1.75rem;
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s, transform 0.2s;
+    overflow: hidden;
+    outline: none;
+  }
+
+  .program-card:hover,
+  .program-card:focus-within,
+  .program-card:focus {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .program-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .program-card--featured {
+    grid-column: span 2;
+  }
+
+  .program-card-category {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+    padding: 0.25rem 0.625rem;
+    border: 1px solid var(--accent);
+    border-radius: 2rem;
+    opacity: 0.8;
+  }
+
+  .program-card-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+    padding-right: 2rem; /* space for chevron */
+  }
+
+  .program-card-tagline {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Expandable section */
+  .program-card-expand {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
+    margin-top: 0;
+  }
+
+  .program-card:hover .program-card-expand,
+  .program-card:focus-within .program-card-expand,
+  .program-card:focus .program-card-expand {
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 1.25rem;
+  }
+
+  .program-card-description {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+  }
+
+  .program-card-section {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .program-card-section-title {
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+  }
+
+  .program-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .program-card-list-item {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .program-card-list-item::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* Chevron */
+  .program-card-chevron {
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    transition: transform 0.25s, color 0.2s;
+  }
+
+  .program-card:hover .program-card-chevron,
+  .program-card:focus-within .program-card-chevron,
+  .program-card:focus .program-card-chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+
+  /* Bottom accent bar */
+  .program-card-accent-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .program-card:hover .program-card-accent-bar,
+  .program-card:focus-within .program-card-accent-bar,
+  .program-card:focus .program-card-accent-bar {
+    transform: scaleX(1);
+  }
+
+  .program-card-thumb {
+    margin: -1.75rem -1.75rem 1.25rem;
+    overflow: hidden;
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+
+  .program-card-thumb-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 8 / 5;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .program-card:hover .program-card-thumb-img {
+    transform: scale(1.03);
+  }
+</style>

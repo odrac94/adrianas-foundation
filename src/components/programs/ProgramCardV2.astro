@@ -1,0 +1,225 @@
+---
+import type { Program } from '../../types/index'
+
+interface Props {
+  program: Program
+}
+
+const { program } = Astro.props
+
+const categoryColors: Record<string, string> = {
+  mentorship: '#E9AD00',
+  sports: '#06579A',
+  community: '#06579A',
+  partnership: '#0D3456'
+}
+
+const categoryLabels: Record<string, string> = {
+  mentorship: 'Mentorship',
+  sports: 'Sports',
+  community: 'Community',
+  partnership: 'Partnership'
+}
+
+const accentColor = categoryColors[program.category] ?? '#E9AD00'
+const categoryLabel = categoryLabels[program.category] ?? program.category
+const placeholderImg = program.image ?? `https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=${encodeURIComponent(program.title)}`
+---
+
+<article
+  id={program.id}
+  class="pcard"
+  style={`--accent: ${accentColor}`}
+  data-animate="fade-up"
+>
+  <!-- Image -->
+  <div class="pcard-img-wrap">
+    <img
+      src={placeholderImg}
+      alt={program.title}
+      class="pcard-img"
+      width="600"
+      height="400"
+      loading="lazy"
+    />
+    <div class="pcard-img-overlay" aria-hidden="true"></div>
+    <!-- Category badge on image -->
+    <span class="pcard-badge">{categoryLabel}</span>
+  </div>
+
+  <!-- Content -->
+  <div class="pcard-body">
+    <h3 class="pcard-title">{program.title}</h3>
+    <p class="pcard-tagline">{program.tagline}</p>
+
+    <!-- Goals preview (first 2) -->
+    <ul class="pcard-goals" role="list">
+      {program.goals.slice(0, 2).map((goal) => (
+        <li class="pcard-goal">
+          <span class="pcard-goal-marker" aria-hidden="true">›</span>
+          {goal}
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <a href={`/programs#${program.id}`} class="pcard-cta">
+      Learn More
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Bottom accent -->
+  <div class="pcard-accent" aria-hidden="true"></div>
+</article>
+
+<style>
+  .pcard {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  }
+
+  .pcard:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  /* ── Image ── */
+  .pcard-img-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pcard-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .pcard:hover .pcard-img {
+    transform: scale(1.05);
+  }
+
+  .pcard-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      rgba(10, 31, 45, 0.7) 100%
+    );
+    pointer-events: none;
+  }
+
+  .pcard-badge {
+    position: absolute;
+    top: 0.875rem;
+    left: 0.875rem;
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.25rem 0.625rem;
+    background: rgba(10, 31, 45, 0.75);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--accent);
+    border-radius: 2rem;
+  }
+
+  /* ── Body ── */
+  .pcard-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .pcard-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+  }
+
+  .pcard-tagline {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+    margin: 0 0 1.25rem;
+  }
+
+  .pcard-goals {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .pcard-goal {
+    display: flex;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+  }
+
+  .pcard-goal-marker {
+    color: var(--accent);
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  .pcard-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: gap 0.2s;
+    margin-top: auto;
+  }
+
+  .pcard-cta:hover { gap: 0.625rem; }
+
+  /* ── Bottom accent ── */
+  .pcard-accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .pcard:hover .pcard-accent {
+    transform: scaleX(1);
+  }
+</style>

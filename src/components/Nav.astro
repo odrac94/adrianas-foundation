@@ -1,0 +1,363 @@
+---
+import { Image } from 'astro:assets'
+import type { NavItem } from '../types/index'
+import logoImg from '../assets/adrianas-foundation-logo.png'
+
+interface Props {
+  items: NavItem[]
+  currentPath: string
+}
+
+const { items, currentPath } = Astro.props
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/'
+  return currentPath.startsWith(href)
+}
+---
+
+<header class="nav-header">
+  <nav class="nav-container" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Adriana's Foundation — Home">
+      <Image
+        src={logoImg}
+        alt="Adriana's Foundation"
+        class="nav-logo-img"
+        height={80}
+        loading="eager"
+        quality={100}
+      />
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="nav-links" role="list">
+      {items.map((item) => (
+        <li class={item.children ? 'nav-item nav-item--dropdown' : 'nav-item'}>
+          {item.children ? (
+            <div class="nav-dropdown-wrapper">
+              <a
+                href={item.href}
+                class={`nav-link nav-link--dropdown-trigger ${isActive(item.href) ? 'nav-link--active' : ''}`}
+                aria-haspopup="true"
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+                <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <ul class="nav-dropdown" role="list">
+                {item.children.map((child) => (
+                  <li>
+                    <a href={child.href} class="nav-dropdown-link">
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class={`nav-link ${isActive(item.href) ? 'nav-link--active' : ''}`}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    <!-- Donate button -->
+    <a
+      href="/donate"
+      class="nav-donate-btn"
+    >
+      Donate
+    </a>
+
+    <!-- Mobile hamburger using <details> — zero JS -->
+    <details class="nav-mobile">
+      <summary class="nav-mobile-toggle" aria-label="Toggle navigation menu">
+        <span class="nav-hamburger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </summary>
+      <div class="nav-mobile-menu">
+        <ul role="list">
+          {items.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class={`nav-mobile-link ${isActive(item.href) ? 'nav-mobile-link--active' : ''}`}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+              {item.children && (
+                <ul class="nav-mobile-submenu" role="list">
+                  {item.children.map((child) => (
+                    <li>
+                      <a href={child.href} class="nav-mobile-sublink">
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+        <a
+          href="/donate"
+          class="nav-mobile-donate"
+        >
+          Donate Now
+        </a>
+      </div>
+    </details>
+  </nav>
+</header>
+
+<style>
+  .nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 31, 45, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(233, 173, 0, 0.15);
+  }
+
+  .nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-logo { text-decoration: none; flex-shrink: 0; }
+
+  .nav-logo-img {
+    height: 2.5rem;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+  }
+
+  .nav-item { position: relative; }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: #E9AD00;
+    background: rgba(233, 173, 0, 0.08);
+  }
+
+  .nav-link--active { color: #E9AD00; }
+
+  .nav-chevron { transition: transform 0.2s; }
+
+  .nav-dropdown-wrapper { position: relative; }
+
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    min-width: 280px;
+    background: #0D3456;
+    border: 1px solid rgba(233, 173, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  .nav-dropdown-wrapper:hover .nav-dropdown,
+  .nav-dropdown-wrapper:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-dropdown-wrapper:hover .nav-chevron,
+  .nav-dropdown-wrapper:focus-within .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  .nav-dropdown-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .nav-dropdown-link:hover,
+  .nav-dropdown-link:focus-visible {
+    color: #E9AD00;
+    background: rgba(233, 173, 0, 0.08);
+  }
+
+  .nav-donate-btn {
+    flex-shrink: 0;
+    padding: 0.5rem 1.25rem;
+    background: #E9AD00;
+    color: #0A1F2D;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-donate-btn:hover {
+    background: #FFD040;
+    transform: translateY(-1px);
+  }
+
+  .nav-mobile {
+    display: none;
+    margin-left: auto;
+  }
+
+  .nav-mobile-toggle {
+    list-style: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    transition: background 0.2s;
+  }
+
+  .nav-mobile-toggle::-webkit-details-marker { display: none; }
+
+  .nav-mobile-toggle:hover { background: rgba(233, 173, 0, 0.1); }
+
+  .nav-hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 22px;
+  }
+
+  .nav-hamburger-icon span {
+    display: block;
+    height: 2px;
+    background: #E9AD00;
+    border-radius: 2px;
+  }
+
+  .nav-mobile-menu {
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    right: 0;
+    background: #0A1F2D;
+    border-bottom: 1px solid rgba(233, 173, 0, 0.15);
+    padding: 1.5rem;
+    max-height: calc(100vh - 4.5rem);
+    overflow-y: auto;
+  }
+
+  .nav-mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-mobile-link {
+    display: block;
+    padding: 0.75rem 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color 0.15s;
+  }
+
+  .nav-mobile-link:hover,
+  .nav-mobile-link--active { color: #E9AD00; }
+
+  .nav-mobile-submenu {
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-mobile-sublink {
+    display: block;
+    padding: 0.4rem 0;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-mobile-sublink:hover { color: #E9AD00; }
+
+  .nav-mobile-donate {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.875rem;
+    background: #E9AD00;
+    color: #0A1F2D;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links,
+    .nav-donate-btn { display: none; }
+    .nav-mobile { display: block; }
+  }
+</style>

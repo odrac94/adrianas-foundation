@@ -1,0 +1,211 @@
+---
+import { getStats } from '../../content/impact'
+
+const stats = getStats()
+---
+
+<section class="stats" aria-labelledby="stats-heading">
+  <div class="stats-container">
+
+    <div class="stats-header" data-animate="fade-up">
+      <div class="stats-label" aria-hidden="true">Our Impact</div>
+      <h2 id="stats-heading" class="stats-heading">
+        Every number represents a life transformed
+      </h2>
+      <p class="stats-subheading">and a future made brighter</p>
+    </div>
+
+    <ul class="stats-grid" role="list" aria-label="Impact statistics" data-animate="stagger">
+      {stats.map((stat) => (
+        <li class="stats-item">
+          <span
+            class="stats-value"
+            data-value={stat.value}
+            aria-label={`${stat.value}${stat.suffix ?? ''} ${stat.label}`}
+          >
+            {parseInt(stat.value).toLocaleString()}{stat.suffix ?? ''}
+          </span>
+          <span class="stats-label-text" aria-hidden="true">{stat.label}</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="stats-footnote">
+      100% of proceeds are reinvested into programs that directly benefit the communities we serve.
+    </p>
+
+  </div>
+</section>
+
+<script>
+  // Count-up animation triggered by IntersectionObserver
+  // Degrades gracefully: final values already rendered in HTML
+  function easeOutCubic(t: number): number {
+    return 1 - Math.pow(1 - t, 3)
+  }
+
+  function formatNumber(n: number): string {
+    return n.toLocaleString()
+  }
+
+  function animateStat(el: HTMLElement): void {
+    const target = parseInt(el.dataset.value ?? '0', 10)
+    const suffix = el.textContent?.replace(/[\d,]/g, '') ?? ''
+    const duration = 1500
+    const startTime = performance.now()
+
+    function tick(currentTime: number): void {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = easeOutCubic(progress)
+      const current = Math.floor(eased * target)
+      el.textContent = formatNumber(current) + suffix
+
+      if (progress < 1) {
+        requestAnimationFrame(tick)
+      }
+    }
+
+    requestAnimationFrame(tick)
+  }
+
+  const statValues = document.querySelectorAll<HTMLElement>('.stats-value[data-value]')
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateStat(entry.target as HTMLElement)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    statValues.forEach((el) => observer.observe(el))
+  }
+</script>
+
+<style>
+  .stats {
+    background: #0D3456;
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative background element */
+  .stats::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60rem;
+    height: 60rem;
+    background: radial-gradient(ellipse, rgba(233, 173, 0, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .stats-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .stats-label {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #E9AD00;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .stats-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .stats-subheading {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0.5rem 0 4rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    list-style: none;
+    margin: 0 0 3rem;
+    padding: 0;
+  }
+
+  .stats-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2.5rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    transition: background 0.2s;
+  }
+
+  .stats-item:hover {
+    background: rgba(233, 173, 0, 0.12);
+  }
+
+  .stats-value {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 900;
+    color: #E9AD00;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    display: block;
+  }
+
+  .stats-label-text {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .stats-footnote {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    font-style: italic;
+  }
+
+  @media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
