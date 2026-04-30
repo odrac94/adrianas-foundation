@@ -1,5 +1,15 @@
+# Dependencies
 node_modules/
-.vercel/output/
+
+# Build output
+.vercel/
 .astro/
+dist/
+
+# OS files
 .DS_Store
-src/assets/.DS_Store
+**/.DS_Store
+
+# Environment
+.env
+.env.*
