@@ -6,7 +6,7 @@ interface Props {
 
 const {
   quote = "From undocumented immigrant to insurance empire. Now building economic mobility for the next generation.",
-  attribution = "— Publication"
+  attribution = "The Hollywood Reporter"
 } = Astro.props
 ---
 
@@ -39,7 +39,7 @@ const {
 <style>
   .founder-quote {
     min-height: 100vh;
-    background: #0A1F2D;
+    background: var(--color-bg-dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +104,7 @@ const {
     display: block;
     font-family: var(--font-accent);
     font-size: clamp(6rem, 12vw, 10rem);
-    color: #E9AD00;
+    color: var(--color-gold);
     line-height: 0.6;
     opacity: 1;
     margin-bottom: -1rem;
@@ -130,7 +130,7 @@ const {
   .founder-quote-rule {
     width: 3rem;
     height: 2px;
-    background: #E9AD00;
+    background: var(--color-gold);
     flex-shrink: 0;
   }
 
@@ -139,7 +139,7 @@ const {
     font-style: normal;
     font-size: 0.875rem;
     font-weight: 500;
-    color: #E9AD00;
+    color: var(--color-gold);
     text-transform: uppercase;
     letter-spacing: 0.12em;
   }

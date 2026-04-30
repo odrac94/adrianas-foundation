@@ -7,7 +7,7 @@ const programs = getPrograms()
 
 const categoryColors: Record<string, string> = {
   mentorship: '#E9AD00',
-  sports: '#06579A',
+  sports: 'var(--color-terracotta)',
   community: '#4A9BD9',
   partnership: '#7BCFED'
 }
@@ -167,7 +167,7 @@ const categoryLabels: Record<string, string> = {
 
 <style>
   .pp {
-    background: #0A1F2D;
+    background: var(--color-bg-warm);
     min-height: 100vh;
     padding: 8rem 0 6rem;
   }
@@ -185,7 +185,7 @@ const categoryLabels: Record<string, string> = {
     font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 700;
-    color: #E9AD00;
+    color: var(--color-terracotta);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 1rem;
@@ -195,7 +195,7 @@ const categoryLabels: Record<string, string> = {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 900;
-    color: #fff;
+    color: var(--color-bg-dark);
     line-height: 1;
     letter-spacing: -0.03em;
     margin: 0 0 1.5rem;
@@ -204,7 +204,7 @@ const categoryLabels: Record<string, string> = {
   .pp-subtitle {
     font-family: var(--font-body);
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     line-height: 1.7;
     margin: 0 0 1rem;
   }
@@ -212,12 +212,12 @@ const categoryLabels: Record<string, string> = {
   .pp-funding {
     font-family: var(--font-body);
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(0, 0, 0, 0.45);
     line-height: 1.6;
     margin: 0;
   }
 
-  .pp-funding strong { color: #E9AD00; font-weight: 600; }
+  .pp-funding strong { color: var(--color-terracotta); font-weight: 600; }
 
   /* ── Hidden radios ── */
   .pp-radio {
@@ -235,8 +235,8 @@ const categoryLabels: Record<string, string> = {
 
   .pp-panel {
     display: none;
-    background: #0D3456;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-bg-light-gray);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.75rem;
     overflow: hidden;
     animation: panelFadeIn 0.35s ease;
@@ -275,7 +275,7 @@ const categoryLabels: Record<string, string> = {
     left: 0;
     right: 0;
     height: 4rem;
-    background: linear-gradient(to bottom, transparent, #0D3456);
+    background: linear-gradient(to bottom, transparent, var(--color-bg-light-gray));
     pointer-events: none;
     z-index: 1;
   }
@@ -285,7 +285,7 @@ const categoryLabels: Record<string, string> = {
     overflow-y: auto;
     max-height: 550px;
     scrollbar-width: thin;
-    scrollbar-color: rgba(233, 173, 0, 0.3) transparent;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
 
   .pp-panel-content::-webkit-scrollbar {
@@ -297,7 +297,7 @@ const categoryLabels: Record<string, string> = {
   }
 
   .pp-panel-content::-webkit-scrollbar-thumb {
-    background: rgba(233, 173, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 2px;
   }
 
@@ -305,7 +305,7 @@ const categoryLabels: Record<string, string> = {
     font-family: var(--font-display);
     font-size: 1.75rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-bg-dark);
     margin: 0 0 1rem;
     line-height: 1.2;
   }
@@ -313,7 +313,7 @@ const categoryLabels: Record<string, string> = {
   .pp-panel-desc {
     font-family: var(--font-body);
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(0, 0, 0, 0.7);
     line-height: 1.75;
     margin: 0 0 2rem;
   }
@@ -333,7 +333,7 @@ const categoryLabels: Record<string, string> = {
     letter-spacing: 0.12em;
     margin: 0 0 0.75rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .pp-panel-list {
@@ -350,7 +350,7 @@ const categoryLabels: Record<string, string> = {
     gap: 0.5rem;
     font-family: var(--font-body);
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(0, 0, 0, 0.65);
     line-height: 1.55;
   }
 
@@ -371,8 +371,9 @@ const categoryLabels: Record<string, string> = {
 
   .pp-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* background: rgba(255, 255, 255, 0.7); */
+    background: var(--color-bg-light-gray);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.625rem;
     padding: 1.25rem;
     cursor: pointer;
@@ -386,7 +387,7 @@ const categoryLabels: Record<string, string> = {
   .pp-card:hover {
     border-color: var(--accent);
     transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.9);
   }
 
   .pp-card-badge {
@@ -408,7 +409,7 @@ const categoryLabels: Record<string, string> = {
     font-family: var(--font-display);
     font-size: 1.125rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-bg-dark);
     margin: 0;
     line-height: 1.25;
   }
@@ -416,7 +417,7 @@ const categoryLabels: Record<string, string> = {
   .pp-card-tagline {
     font-family: var(--font-body);
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(0, 0, 0, 0.5);
     line-height: 1.45;
     margin: 0;
     display: -webkit-box;
@@ -443,7 +444,7 @@ const categoryLabels: Record<string, string> = {
      ══════════════════════════════════════ */
 
   /* Active card highlight */
-  .pp-tabs:has(#tab-elevate-academy:checked) .pp-grid label[for="tab-elevate-academy"],
+  .pp-tabs:has(#tab-agla-academy:checked) .pp-grid label[for="tab-agla-academy"],
   .pp-tabs:has(#tab-adrianas-soccer-academy:checked) .pp-grid label[for="tab-adrianas-soccer-academy"],
   .pp-tabs:has(#tab-annual-copa-adrianas-soccer-tournament:checked) .pp-grid label[for="tab-annual-copa-adrianas-soccer-tournament"],
   .pp-tabs:has(#tab-annual-back-to-school-drive:checked) .pp-grid label[for="tab-annual-back-to-school-drive"],
@@ -452,11 +453,11 @@ const categoryLabels: Record<string, string> = {
   .pp-tabs:has(#tab-annual-food-drive:checked) .pp-grid label[for="tab-annual-food-drive"],
   .pp-tabs:has(#tab-global-community-partnerships:checked) .pp-grid label[for="tab-global-community-partnerships"] {
     border-color: var(--accent);
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--color-bg-light-gray);
   }
 
   /* Active indicator bar */
-  .pp-tabs:has(#tab-elevate-academy:checked) label[for="tab-elevate-academy"] .pp-card-indicator,
+  .pp-tabs:has(#tab-agla-academy:checked) label[for="tab-agla-academy"] .pp-card-indicator,
   .pp-tabs:has(#tab-adrianas-soccer-academy:checked) label[for="tab-adrianas-soccer-academy"] .pp-card-indicator,
   .pp-tabs:has(#tab-annual-copa-adrianas-soccer-tournament:checked) label[for="tab-annual-copa-adrianas-soccer-tournament"] .pp-card-indicator,
   .pp-tabs:has(#tab-annual-back-to-school-drive:checked) label[for="tab-annual-back-to-school-drive"] .pp-card-indicator,
@@ -468,7 +469,7 @@ const categoryLabels: Record<string, string> = {
   }
 
   /* Show panel */
-  .pp-tabs:has(#tab-elevate-academy:checked) #panel-elevate-academy,
+  .pp-tabs:has(#tab-agla-academy:checked) #panel-agla-academy,
   .pp-tabs:has(#tab-adrianas-soccer-academy:checked) #panel-adrianas-soccer-academy,
   .pp-tabs:has(#tab-annual-copa-adrianas-soccer-tournament:checked) #panel-annual-copa-adrianas-soccer-tournament,
   .pp-tabs:has(#tab-annual-back-to-school-drive:checked) #panel-annual-back-to-school-drive,

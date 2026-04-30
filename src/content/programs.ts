@@ -12,7 +12,7 @@ import imgPartners from '../assets/programms/global-community-partnerships.jpg'
 
 const programsData: Omit<Program, 'id'>[] = [
   {
-    title: "Elevate Academy",
+    title: "AGLA Academy",
     tagline: "Mentorship and career development for young adults ages 18–25",
     image: imgElevate,
     description: "A mentorship and career development program for young adults ages 18–25. Through hands-on training led by business professionals and industry mentors, participants build real-world skills in leadership, communication, sales, and career readiness. We provide structured guidance, specialty tracks, and direct access to job opportunities, turning potential into profession.",

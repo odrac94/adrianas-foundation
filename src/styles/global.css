@@ -6,11 +6,13 @@
   /* Colors */
   --color-bg-dark: #0A1F2D;
   --color-bg-light: #e9ad0014;
+  --color-bg-light-gray: #ededed;
+  --color-bg-warm: rgba(233, 173, 0, 0.15);
   --color-gold: #E9AD00;
   --color-terracotta: #06579A;
   --color-text-light: #FFFFFF;
   --color-text-dark: #000000;
-  --color-text-muted: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.6);
 
   /* Fonts */
   --font-display: 'Playfair Display', Georgia, serif;

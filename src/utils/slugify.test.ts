@@ -5,7 +5,7 @@ import { slugify } from './slugify'
 describe('slugify', () => {
   // Unit tests
   it('converts spaces to hyphens', () => {
-    expect(slugify('Elevate Academy')).toBe('elevate-academy')
+    expect(slugify('AGLA Academy')).toBe('agla-academy')
   })
 
   it('lowercases all characters', () => {

@@ -1,14 +1,14 @@
 ---
 import { Image } from 'astro:assets'
-import img1 from '../../assets/vertical-hero-1.jpg'
-import img2 from '../../assets/vertical-hero-2.jpg'
-import img3 from '../../assets/vertical-hero-3.jpg'
-import img4 from '../../assets/square-hero-1.jpg'
-import img5 from '../../assets/square-hero-2.jpg'
-import img6 from '../../assets/square-hero-3.jpg'
-import img7 from '../../assets/horizontal-hero-1.jpg'
-import img8 from '../../assets/horizontal-hero-2.jpg'
-import img9 from '../../assets/horizontal-hero-3.jpg'
+import img1 from '../../assets/hero/vertical-1.jpg'
+import img2 from '../../assets/hero/vertical-2.jpg'
+import img3 from '../../assets/hero/vertical-3.jpg'
+import img4 from '../../assets/hero/square-1.jpg'
+import img5 from '../../assets/hero/square-2.jpg'
+import img6 from '../../assets/hero/square-3.jpg'
+import img7 from '../../assets/hero/horizontal-1.jpg'
+import img8 from '../../assets/hero/horizontal-2.jpg'
+import img9 from '../../assets/hero/horizontal-3.jpg'
 
 interface Props {
   headline?: string
@@ -29,12 +29,12 @@ const {
 // normal/wide cells = horizontal/square images
 const cells = [
   {
-    images: [{ src: img2, alt: "Adriana's Foundation community event" }, { src: img3, alt: 'Youth mentorship program' }, { src: img1, alt: 'Youth mentorship program' }],
+    images: [{ src: img1, alt: "Workshop" }, { src: img3, alt: 'Youth mentorship program' }, { src: img2, alt: 'Youth mentorship program' }],
     span: 'tall',
     fit: 'object-center'   // center all images
   },
   {
-    images: [{ src: img6, alt: 'Annual Santa Tour' }, { src: img6, alt: 'Festival de La Familia' }, { src: img5, alt: 'Festival de La Familia' }],
+    images: [{ src: img6, alt: 'Workshops' }, { src: img4, alt: 'Festival de La Familia' }, { src: img5, alt: 'Festival de La Familia' }],
     span: 'normal',
     fit: 'object-center'   // horizontal/square → center
   },
@@ -140,7 +140,7 @@ const cells = [
     align-items: center;
     padding-top: 4.5rem;
     overflow: hidden;
-    background: #0A1F2D;
+    background: var(--color-bg-dark);
   }
 
   /* ── Background mesh ── */
@@ -154,10 +154,10 @@ const cells = [
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(6, 87, 154, 0.22) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(154, 117, 6, 0.22) 0%, transparent 60%),
       radial-gradient(ellipse 60% 80% at 85% 80%, rgba(233, 173, 0, 0.15) 0%, transparent 55%),
       radial-gradient(ellipse 50% 50% at 10% 20%, rgba(233, 173, 0, 0.08) 0%, transparent 50%),
-      #0A1F2D;
+      var(--color-bg-light-gray);
   }
 
   .hero-grain {
@@ -196,14 +196,14 @@ const cells = [
     display: block;
     width: 2.5rem;
     height: 2px;
-    background: #E9AD00;
+    background: var(--color-gold);
   }
 
   .hero-eyebrow-label {
     font-family: var(--font-body);
     font-size: 0.6875rem;
     font-weight: 700;
-    color: #E9AD00;
+    color: var(--color-gold);
     text-transform: uppercase;
     letter-spacing: 0.15em;
   }
@@ -214,7 +214,7 @@ const cells = [
     font-weight: 900;
     line-height: 0.93;
     letter-spacing: -0.03em;
-    color: #fff;
+    color: var(--color-bg-dark);
     margin: 0 0 1.5rem;
     display: flex;
     flex-wrap: wrap;
@@ -232,12 +232,12 @@ const cells = [
     to { opacity: 1; transform: translateY(0) skewY(0deg); }
   }
 
-  .hero-word:last-child { color: #E9AD00; }
+  .hero-word:last-child { color: var(--color-gold); }
 
   .hero-subheadline {
     font-family: var(--font-body);
     font-size: clamp(1rem, 1.5vw, 1.25rem);
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-bg-dark);
     line-height: 1.7;
     margin: 0 0 2.5rem;
     max-width: 440px;
@@ -254,8 +254,8 @@ const cells = [
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.75rem;
-    background: #E9AD00;
-    color: #0A1F2D;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 700;
@@ -276,19 +276,19 @@ const cells = [
     align-items: center;
     padding: 0.875rem 1.75rem;
     background: transparent;
-    color: rgba(255,255,255,0.85);
+    color: var(--color-bg-dark);
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 500;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--color-bg-dark);
     border-radius: 0.375rem;
     transition: border-color 0.2s, color 0.2s, transform 0.15s;
   }
 
   .hero-cta-secondary:hover {
-    border-color: #E9AD00;
-    color: #E9AD00;
+    border-color: var(--color-gold);
+    color: var(--color-gold);
     transform: translateY(-2px);
   }
 
@@ -317,7 +317,7 @@ const cells = [
     position: relative;
     border-radius: 0.625rem;
     overflow: hidden;
-    background: #0D3456;
+    background: var(--color-terracotta);
   }
 
   /* Each image in a cell stacks and fades */
@@ -400,7 +400,7 @@ const cells = [
   .collage-deco--dot {
     width: 0.5rem;
     height: 0.5rem;
-    background: #E9AD00;
+    background: var(--color-gold);
     border-radius: 50%;
     bottom: 1.5rem;
     left: -0.75rem;
@@ -424,7 +424,7 @@ const cells = [
     left: 0;
     right: 0;
     height: 8rem;
-    background: linear-gradient(to bottom, transparent, #0A1F2D);
+    background: linear-gradient(to bottom, transparent, var(--color-bg-light-gray));
     z-index: 3;
     pointer-events: none;
   }

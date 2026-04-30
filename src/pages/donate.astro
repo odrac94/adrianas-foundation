@@ -210,7 +210,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
   .donate-page {
     position: relative;
     min-height: 100vh;
-    background: #0A1F2D;
+    background: var(--color-bg-warm);
     padding-top: 4.5rem;
     display: flex;
     align-items: center;
@@ -220,7 +220,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
   .donate-grain {
     position: absolute;
     inset: 0;
-    opacity: 0.2;
+    opacity: 0.05;
     background-repeat: repeat;
     background-size: 200px 200px;
     pointer-events: none;
@@ -230,10 +230,6 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
   .donate-mesh {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse 70% 60% at 20% 50%, rgba(6, 87, 154, 0.15) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 70% at 80% 30%, rgba(233, 173, 0, 0.1) 0%, transparent 55%),
-      #0A1F2D;
     z-index: 0;
   }
 
@@ -262,7 +258,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     font-family: var(--font-body);
     font-size: 0.6875rem;
     font-weight: 700;
-    color: #E9AD00;
+    color: var(--color-terracotta);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 1.75rem;
@@ -272,7 +268,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     display: block;
     width: 2rem;
     height: 2px;
-    background: #E9AD00;
+    background: var(--color-terracotta);
     flex-shrink: 0;
   }
 
@@ -280,7 +276,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     font-family: var(--font-display);
     font-size: clamp(2.75rem, 5vw, 5rem);
     font-weight: 900;
-    color: #fff;
+    color: var(--color-bg-dark);
     line-height: 1;
     letter-spacing: -0.03em;
     margin: 0 0 1.5rem;
@@ -288,13 +284,13 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
 
   .donate-heading em {
     font-style: italic;
-    color: #E9AD00;
+    color: var(--color-terracotta);
   }
 
   .donate-lead {
     font-family: var(--font-body);
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7);
     line-height: 1.75;
     margin: 0 0 1.25rem;
     max-width: 480px;
@@ -315,11 +311,11 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     gap: 0.625rem;
     font-family: var(--font-body);
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(0, 0, 0, 0.65);
   }
 
   .donate-trust-icon {
-    color: #E9AD00;
+    color: var(--color-terracotta);
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -330,8 +326,8 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
   .donate-quote {
     margin: 0;
     padding: 1.5rem;
-    border-left: 2px solid #E9AD00;
-    background: rgba(6, 87, 154, 0.15);
+    border-left: 2px solid var(--color-terracotta);
+    background: rgba(6, 87, 154, 0.06);
     border-radius: 0 0.375rem 0.375rem 0;
   }
 
@@ -339,7 +335,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     font-family: var(--font-accent);
     font-style: italic;
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(0, 0, 0, 0.8);
     line-height: 1.6;
     margin: 0 0 0.625rem;
   }
@@ -348,36 +344,36 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     font-family: var(--font-body);
     font-style: normal;
     font-size: 0.75rem;
-    color: #E9AD00;
+    color: var(--color-terracotta);
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
 
   /* ── Right: card ── */
   .donate-card {
-    background: #0D3456;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-bg-light-gray);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
     overflow: hidden;
   }
 
   .donate-card-header {
     padding: 2rem 2rem 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .donate-card-title {
     font-family: var(--font-display);
     font-size: 1.25rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-bg-dark);
     margin: 0 0 0.375rem;
   }
 
   .donate-card-sub {
     font-family: var(--font-body);
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(0, 0, 0, 0.45);
     margin: 0;
   }
 
@@ -394,8 +390,8 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     flex-direction: column;
     gap: 0.375rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0.5rem;
     text-decoration: none;
     transition: border-color 0.2s, background 0.2s, transform 0.15s;
@@ -403,8 +399,8 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
   }
 
   .donate-amount-btn:hover {
-    border-color: #E9AD00;
-    background: rgba(233, 173, 0, 0.15);
+    border-color: var(--color-gold);
+    background: rgba(233, 173, 0, 0.12);
     transform: translateY(-2px);
   }
 
@@ -412,21 +408,21 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     font-family: var(--font-display);
     font-size: 1.375rem;
     font-weight: 700;
-    color: #E9AD00;
+    color: var(--color-gold);
     line-height: 1;
   }
 
   .donate-amount-impact {
     font-family: var(--font-body);
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(0, 0, 0, 0.5);
     line-height: 1.4;
   }
 
   /* Custom amount */
   .donate-custom {
     padding: 0 2rem 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding-top: 1.5rem;
   }
 
@@ -434,7 +430,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     font-family: var(--font-body);
     font-size: 0.75rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 0.75rem;
@@ -445,9 +441,9 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    background: #E9AD00;
-    border: 1px solid #E9AD00;
-    color: #0A1F2D;
+    background: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    color: var(--color-bg-dark);
     font-family: var(--font-body);
     font-size: 1.25rem;
     font-weight: 700;
@@ -468,14 +464,14 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
   /* Other ways */
   .donate-other {
     padding: 1.5rem 2rem 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .donate-other-title {
     font-family: var(--font-body);
     font-size: 0.75rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(0, 0, 0, 0.4);
     text-transform: uppercase;
     letter-spacing: 0.12em;
     margin-bottom: 1rem;
@@ -499,10 +495,10 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(233, 173, 0, 0.15);
-    border: 1px solid rgba(233, 173, 0, 0.22);
+    background: rgba(6, 87, 154, 0.08);
+    border: 1px solid rgba(6, 87, 154, 0.15);
     border-radius: 0.375rem;
-    color: #E9AD00;
+    color: var(--color-terracotta);
     font-size: 0.875rem;
     flex-shrink: 0;
   }
@@ -511,7 +507,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     font-family: var(--font-body);
     font-size: 0.75rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.45);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 0.2rem;
@@ -521,19 +517,19 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     font-style: normal;
     font-family: var(--font-body);
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7);
     line-height: 1.5;
   }
 
   .donate-other-link {
     font-family: var(--font-body);
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7);
     text-decoration: none;
     transition: color 0.15s;
   }
 
-  .donate-other-link:hover { color: #E9AD00; }
+  .donate-other-link:hover { color: var(--color-terracotta); }
 
   /* Carousel */
   .donate-carousel {
@@ -557,12 +553,12 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
 
   .donate-carousel::before {
     left: 0;
-    background: linear-gradient(to right, #0A1F2D, transparent);
+    background: linear-gradient(to right, var(--color-bg-light-gray), transparent);
   }
 
   .donate-carousel::after {
     right: 0;
-    background: linear-gradient(to left, #0A1F2D, transparent);
+    background: linear-gradient(to left, var(--color-bg-light-gray), transparent);
   }
 
   .donate-carousel-track {

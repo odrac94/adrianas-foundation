@@ -1,0 +1,5 @@
+node_modules/
+.vercel/output/
+.astro/
+.DS_Store
+src/assets/.DS_Store
