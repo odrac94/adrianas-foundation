@@ -85,12 +85,31 @@ const categoryIcons: Record<string, string> = {
           <iframe
             id="JotFormIFrame-261187937401864"
             title="Get Involved Form"
-            src="https://form.jotform.com/261187937401864"
-            style="min-width:100%;max-width:100%;height:539px;border:none;"
+            src="https://form.jotform.com/261187937401864?isIframeEmbed=1&background=FFFFFF"
+            style="min-width:100%;max-width:100%;border:none;"
             scrolling="no"
             allow="geolocation; microphone; camera; fullscreen"
           ></iframe>
         </div>
+        <script is:inline>
+          // Auto-resize JotForm iframe
+          window.addEventListener('message', function(e) {
+            if (typeof e.data === 'object') return;
+            var args = e.data.split(':');
+            if (args.length > 2) { 
+              var iframe = document.getElementById('JotFormIFrame-' + args[args.length - 1]);
+              if (!iframe) return;
+              switch (args[0]) {
+                case 'setHeight':
+                  iframe.style.height = args[1] + 'px';
+                  break;
+                case 'scrollIntoView':
+                  iframe.scrollIntoView();
+                  break;
+              }
+            }
+          });
+        </script>
       </div>
 
       <!-- Give Today CTA -->
