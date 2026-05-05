@@ -34,6 +34,7 @@ const { entry, iconHtml = '' } = Astro.props
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0.75rem;
     transition: border-color 0.2s, background 0.2s;
+    min-width: 0;
   }
 
   .contact-category:hover {
@@ -53,6 +54,11 @@ const { entry, iconHtml = '' } = Astro.props
     color: #06579A;
     font-size: 1.125rem;
     flex-shrink: 0;
+  }
+
+  .contact-category-content {
+    min-width: 0;
+    flex: 1;
   }
 
   .contact-category-title {
@@ -80,6 +86,7 @@ const { entry, iconHtml = '' } = Astro.props
     border-bottom: 1px solid transparent;
     transition: border-color 0.15s;
     padding-bottom: 1px;
+    word-break: break-all;
   }
 
   .contact-category-email:hover {

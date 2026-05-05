@@ -112,6 +112,7 @@ const categoryLabels: Record<string, string> = {
         </div>
 
         <!-- Card grid SECOND (below panel) — no images, just badge + title + tagline -->
+        <div class="pp-grid-wrap">
         <div class="pp-grid" role="tablist" aria-label="Select a program">
           {programs.map((p) => {
             const accent = categoryColors[p.category] ?? '#E9AD00'
@@ -132,6 +133,7 @@ const categoryLabels: Record<string, string> = {
               </label>
             )
           })}
+        </div>
         </div>
       </div>
 
@@ -180,6 +182,12 @@ const categoryLabels: Record<string, string> = {
 
   /* ── Header ── */
   .pp-header { margin-bottom: 4rem; max-width: 720px; }
+
+  @media (max-width: 768px) {
+    .pp-header {
+      margin-bottom: 1.25rem;
+    }
+  }
 
   .pp-label {
     font-family: var(--font-body);
@@ -363,6 +371,15 @@ const categoryLabels: Record<string, string> = {
   }
 
   /* ── Card grid (below panel) — text only ── */
+  .pp-grid-wrap {
+    position: relative;
+  }
+
+  .pp-grid-wrap::before,
+  .pp-grid-wrap::after {
+    display: none;
+  }
+
   .pp-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -500,15 +517,42 @@ const categoryLabels: Record<string, string> = {
     }
 
     .pp-grid {
-      order: -1; /* move above panels */
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       gap: 0.5rem;
-      padding-bottom: 0.75rem;
-      margin-bottom: 1rem;
+      padding: 0.75rem;
       scrollbar-width: none; /* Firefox */
+    }
+
+    .pp-grid-wrap {
+      order: -1;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .pp-grid-wrap::before,
+    .pp-grid-wrap::after {
+      display: block;
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0.75rem;
+      width: 2.5rem;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .pp-grid-wrap::before {
+      left: 0;
+      /* background: linear-gradient(to right, var(--color-bg-warm), transparent); */
+      background: linear-gradient(to right, #faf3e2, transparent);
+    }
+
+    .pp-grid-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, #faf3e2, transparent);
     }
 
     .pp-grid::-webkit-scrollbar { display: none; }

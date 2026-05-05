@@ -188,6 +188,7 @@ const transformations = [
     border-radius: 0.75rem;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     backdrop-filter: blur(4px);
+    max-width: 100%;
   }
 
   .story-transformation-card:hover {
@@ -215,13 +216,13 @@ const transformations = [
     gap: 0.75rem;
     flex: 1;
     min-width: 0;
+    flex-wrap: wrap;
   }
 
   .story-transformation-from {
     font-family: var(--font-body);
     font-size: 0.9375rem;
     color: rgba(0, 0, 0, 0.5);
-    white-space: nowrap;
     text-decoration: line-through;
     text-decoration-color: rgba(0, 0, 0, 0.2);
   }
@@ -251,7 +252,6 @@ const transformations = [
     font-size: 1.0625rem;
     font-weight: 700;
     color: var(--color-terracotta);
-    white-space: nowrap;
   }
 
   .story-photo {
@@ -272,6 +272,29 @@ const transformations = [
     .story-layout {
       grid-template-columns: 1fr;
       gap: 3rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .story {
+      padding: 5rem 0 4rem;
+    }
+
+    .story-transformation-card {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+
+    .story-transformation-content {
+      gap: 0.5rem;
+    }
+
+    .story-transformation-from {
+      font-size: 0.8125rem;
+    }
+
+    .story-transformation-to {
+      font-size: 0.9375rem;
     }
   }
 </style>

@@ -243,7 +243,7 @@ const categoryIcons: Record<string, string> = {
   }
 
   @media (max-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; margin-bottom: 20px;}
     .contact-grid > :last-child:nth-child(odd) { grid-column: span 1; }
     .contact-donate { flex-direction: column; align-items: flex-start; }
   }
@@ -255,6 +255,13 @@ const categoryIcons: Record<string, string> = {
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-form-section {
+      padding: 1.25rem;
+      margin-bottom: 20px;
+    }
   }
 
   .contact-form-header {
