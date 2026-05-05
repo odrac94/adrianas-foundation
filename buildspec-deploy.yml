@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - aws eks update-kubeconfig --region us-west-1 --name hr-cluster
+      - aws sts get-caller-identity
+  build:
+    commands:
+      - echo "Deploying to EKS cluster..."
+      - echo "Applying manifests"
+      - kubectl apply -f adrianas-foundation.yaml
+      - echo "Restarting deployment to pick up new image"
+      - kubectl rollout restart deployment adrianas-foundation-deployment --namespace=default
+      - echo "Deployment complete"

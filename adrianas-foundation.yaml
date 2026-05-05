@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: adrianas-foundation-deployment
+    labels:
+        app: adrianas-foundation
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: adrianas-foundation
+    template:
+        metadata:
+            labels:
+                app: adrianas-foundation
+        spec:
+            containers:
+                - name: adrianas-foundation
+                  image: "780338672394.dkr.ecr.us-west-1.amazonaws.com/adrianas-foundation:latest"
+                  imagePullPolicy: Always
+                  ports:
+                      - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: adrianas-foundation-nodeport-service
+    labels:
+        app: adrianas-foundation
+    annotations:
+        #Important Note:  Need to add health check path annotations in service level if we are planning to use multiple targets in a load balancer
+        alb.ingress.kubernetes.io/healthcheck-path: /
+spec:
+    type: NodePort
+    selector:
+        app: adrianas-foundation
+    ports:
+        - port: 80
+          targetPort: 80

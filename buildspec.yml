@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 780338672394.dkr.ecr.us-west-1.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t adrianas-foundation:latest .
+      - docker tag adrianas-foundation:latest 780338672394.dkr.ecr.us-west-1.amazonaws.com/adrianas-foundation:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 780338672394.dkr.ecr.us-west-1.amazonaws.com/adrianas-foundation:latest
+      - printf '[{"name":"%s","imageUri":"%s"}]' adrianas-foundation 780338672394.dkr.ecr.us-west-1.amazonaws.com/adrianas-foundation:latest > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json
+    - buildspec-deploy.yml
+    - adrianas-foundation.yaml
