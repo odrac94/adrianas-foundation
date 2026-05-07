@@ -1,0 +1,183 @@
+---
+---
+
+<section class="ps" aria-labelledby="ps-problem-heading">
+  <div class="ps-container">
+
+    <!-- Problem -->
+    <div class="ps-block ps-block--problem" data-animate="fade-up">
+      <div class="ps-eyebrow">The Problem</div>
+      <h2 id="ps-problem-heading" class="ps-heading">
+        Barriers to opportunity are holding back<br />
+        <em>career growth and stability</em>
+      </h2>
+      <p class="ps-body">
+        Too many Latinos, women, young adults, and single mothers are held back
+        not by lack of potential, but by limited access to affordable education,
+        professional networks, job training, and real employment
+        opportunities—barriers that prevent career growth and long-term stability.
+      </p>
+      <p class="ps-body ps-body--accent">
+        Adriana's Foundation exists to change that.
+      </p>
+    </div>
+
+    <!-- Divider -->
+    <div class="ps-divider" aria-hidden="true">
+      <span class="ps-divider-line"></span>
+      <span class="ps-divider-dot"></span>
+      <span class="ps-divider-line"></span>
+    </div>
+
+    <!-- Solution -->
+    <div class="ps-block ps-block--solution" data-animate="fade-up">
+      <div class="ps-eyebrow ps-eyebrow--solution">Our Solution</div>
+      <h2 class="ps-heading">
+        We don't just educate.<br />
+        <em>We prepare students for real careers.</em>
+      </h2>
+      <p class="ps-body">
+        Our program combines foundational education, technical training,
+        mentorship, internships, and job placement support to help students
+        build long-term economic stability.
+      </p>
+      <a href="/academy" class="ps-cta">
+        Learn How It Works
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ps {
+    background: var(--color-bg-light-gray);
+    padding: 6rem 0;
+  }
+
+  .ps-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .ps-block {
+    text-align: center;
+  }
+
+  .ps-eyebrow {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.25rem;
+    padding: 0.35rem 0.875rem;
+    border: 1px solid rgba(6, 87, 154, 0.25);
+    border-radius: 2rem;
+  }
+
+  .ps-eyebrow--solution {
+    color: var(--color-gold);
+    border-color: rgba(233, 173, 0, 0.4);
+  }
+
+  .ps-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    font-weight: 700;
+    color: var(--color-bg-dark);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .ps-heading em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  .ps-block--solution .ps-heading em {
+    color: var(--color-terracotta);
+  }
+
+  .ps-body {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1.75;
+    margin: 0 auto 1rem;
+    max-width: 720px;
+  }
+
+  .ps-body--accent {
+    font-weight: 600;
+    color: var(--color-terracotta);
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .ps-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 4rem 0;
+  }
+
+  .ps-divider-line {
+    display: block;
+    width: 4rem;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .ps-divider-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-gold);
+  }
+
+  .ps-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 3rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(233, 173, 0, 0.25);
+  }
+
+  .ps-cta:hover {
+    background: #FFD040;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(233, 173, 0, 0.35);
+  }
+
+  @media (max-width: 640px) {
+    .ps {
+      padding: 4rem 0;
+    }
+
+    .ps-divider {
+      margin: 3rem 0;
+    }
+
+    .ps-divider-line {
+      width: 2.5rem;
+    }
+  }
+</style>

@@ -23,20 +23,20 @@ const amounts = [
 ]
 
 const impactMap: Record<number, string> = {
-  50:   'Provides school supplies for one child for an entire year.',
-  100:  'Funds a mentorship session for a young adult in Elevate Academy.',
-  500:  'Sponsors a family\'s holiday experience at the Annual Santa Tour.',
-  1000: 'Covers uniforms and equipment for a youth soccer player for a season.',
-  2500: 'Supports a full semester of career development programming.',
-  5000: 'Funds a community event that serves 200+ families directly.',
+  50:   'Covers student supplies for one AGLA participant.',
+  100:  'Funds a mentorship session for a student in the Academy.',
+  500:  'Supports AGLA training materials for one student.',
+  1000: 'Sponsors one student through the 6-week foundational program.',
+  2500: 'Funds a full training pathway including certifications.',
+  5000: 'Sponsors an entire cohort of 10 AGLA students.',
 }
 
 const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
 ---
 
 <BaseLayout
-  title="Donate — Adriana's Foundation"
-  description="Your gift empowers Latino youth and families. Choose an amount and make an impact today with Adriana's Foundation."
+  title="For Donors & Partners — Adriana's Foundation"
+  description="Join us in turning education into employment. Your support provides free training, mentorship, internships, and job placement services."
 >
   <div class="donate-page">
     <!-- Grain texture -->
@@ -51,18 +51,47 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
       <div class="donate-left">
         <div class="donate-eyebrow">
           <span class="donate-eyebrow-line" aria-hidden="true"></span>
-          Give Today
+          For Donors &amp; Partners
         </div>
 
         <h1 class="donate-heading">
-          Your gift<br />
-          <em>changes lives</em>
+          Join us in turning<br />
+          <em>education into employment</em>
         </h1>
 
         <p class="donate-lead">
-          Every dollar you give goes directly to programs that break generational barriers,
-          open career pathways, and bring joy to families who deserve it most.
+          Your support helps provide free training, mentorship, internships, and
+          job placement services for students ready to transform their future.
         </p>
+
+        <!-- Ways to Support -->
+        <div class="donate-ways-support" aria-label="Ways to support">
+          <div class="donate-ways-support-title">Ways to Support</div>
+          <ul class="donate-ways-support-list" role="list">
+            <li>Cover Student Supplies</li>
+            <li>Sponsor a Student</li>
+            <li>Fund a Cohort</li>
+            <li>Become an Employer Partner</li>
+            <li>Provide Mentorship</li>
+            <li>Support Program Operations</li>
+          </ul>
+        </div>
+
+        <!-- Partner CTAs -->
+        <div class="donate-partner-ctas">
+          <a
+            href="mailto:partnerships@adrianasfoundation.org?subject=Partnership%20Inquiry&body=I'm%20interested%20in%20partnering%20with%20Adriana's%20Foundation.%20Please%20share%20more%20details."
+            class="donate-partner-btn"
+          >
+            Partner With Us
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#donate-amounts" class="donate-partner-btn-secondary">
+            Donate Now
+          </a>
+        </div>
 
         <!-- Trust signals -->
         <div class="donate-trust" aria-label="Trust indicators">
@@ -121,7 +150,7 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
       </div>
 
       <!-- ── Right: donation selector ── -->
-      <div class="donate-right">
+      <div class="donate-right" id="donate-amounts">
         <div class="donate-card">
           <div class="donate-card-header">
             <h2 class="donate-card-title">Choose a donation amount</h2>
@@ -294,6 +323,102 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     line-height: 1.75;
     margin: 0 0 1.25rem;
     max-width: 480px;
+  }
+
+  /* Ways to Support */
+  .donate-ways-support {
+    margin: 2.5rem 0;
+    padding: 1.75rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+  }
+
+  .donate-ways-support-title {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  .donate-ways-support-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+  }
+
+  .donate-ways-support-list li {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(0, 0, 0, 0.75);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .donate-ways-support-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--color-gold);
+    font-size: 0.75rem;
+  }
+
+  /* Partner CTAs */
+  .donate-partner-ctas {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .donate-partner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 3rem;
+    box-shadow: 0 4px 16px rgba(233, 173, 0, 0.25);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+
+  .donate-partner-btn:hover {
+    background: #FFD040;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(233, 173, 0, 0.35);
+  }
+
+  .donate-partner-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 1.75rem;
+    background: transparent;
+    color: var(--color-bg-dark);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--color-bg-dark);
+    border-radius: 3rem;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .donate-partner-btn-secondary:hover {
+    background: var(--color-bg-dark);
+    color: var(--color-gold);
+    transform: translateY(-2px);
   }
 
 
@@ -624,6 +749,10 @@ const customUrl = 'https://buy.stripe.com/14kdTYeIrfOudiwdQX'
     .donate-other {
       padding-left: 1.25rem;
       padding-right: 1.25rem;
+    }
+
+    .donate-ways-support-list {
+      grid-template-columns: 1fr;
     }
   }
 </style>

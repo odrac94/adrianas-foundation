@@ -115,20 +115,29 @@ const categoryIcons: Record<string, string> = {
       <!-- Give Today CTA -->
       <div class="contact-donate">
         <div class="contact-donate-content">
-          <h2 class="contact-donate-heading">Ready to make an impact?</h2>
+          <h2 class="contact-donate-heading">Ready to build a better future?</h2>
           <p class="contact-donate-text">
-            Your support goes directly to programs that transform lives in our community.
+            Whether you are a student, donor, employer, or community partner,
+            you can be part of the pathway from training to employment.
           </p>
         </div>
-        <a
-          href="/donate"
-          class="contact-donate-btn"
-        >
-          Give Today
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <div class="contact-donate-actions">
+          <a
+            href="/academy"
+            class="contact-donate-btn"
+          >
+            Apply for the Program
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a
+            href="/donate"
+            class="contact-donate-btn-secondary"
+          >
+            Support Adriana's Foundation
+          </a>
+        </div>
       </div>
 
     </div>
@@ -232,7 +241,7 @@ const categoryIcons: Record<string, string> = {
     font-size: 0.9375rem;
     font-weight: 700;
     text-decoration: none;
-    border-radius: 0.375rem;
+    border-radius: 3rem;
     white-space: nowrap;
     transition: background 0.2s, transform 0.15s;
   }
@@ -240,6 +249,34 @@ const categoryIcons: Record<string, string> = {
   .contact-donate-btn:hover {
     background: #FFD040;
     transform: translateY(-1px);
+  }
+
+  .contact-donate-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: var(--color-bg-dark);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--color-bg-dark);
+    border-radius: 3rem;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .contact-donate-btn-secondary:hover {
+    background: var(--color-bg-dark);
+    color: var(--color-gold);
+    transform: translateY(-1px);
+  }
+
+  .contact-donate-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 768px) {

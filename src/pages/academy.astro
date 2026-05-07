@@ -1,0 +1,517 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const programDetails = [
+  '6-week foundational training',
+  'Certified Courses',
+  'Small cohorts of 10 students per class',
+  'Career-specific training pathways',
+  'Mentorship included',
+  'Internship opportunities',
+  'Job placement support',
+]
+
+const modelSteps = [
+  {
+    num: '01',
+    title: 'Career Clarity',
+    body: 'Students identify their strengths and choose a clear career path aligned with market demand.'
+  },
+  {
+    num: '02',
+    title: 'Real-World Skills',
+    body: 'Students learn professional skills like communication, emotional intelligence, and workplace readiness, along with technical training for high-demand careers.'
+  },
+  {
+    num: '03',
+    title: 'Work Experience',
+    body: 'Students gain hands-on experience through internships, mentorship, and real-world exposure.'
+  },
+  {
+    num: '04',
+    title: 'Job Placement',
+    body: 'We support students in securing employment and launching a sustainable career path.'
+  }
+]
+
+const skillCategories = [
+  { title: 'Professional Skills', icon: 'briefcase' },
+  { title: 'Career Development', icon: 'trending' },
+  { title: 'Personal Development', icon: 'user' },
+  { title: 'Workforce Readiness', icon: 'check' }
+]
+
+const applicationSteps = [
+  { num: 1, label: 'Apply Online' },
+  { num: 2, label: 'Interview' },
+  { num: 3, label: 'Acceptance' },
+  { num: 4, label: 'Start Training' }
+]
+---
+
+<BaseLayout
+  title="Academy — Adriana's Foundation"
+  description="Career-focused training and support program. 6-week foundational training, certified courses, mentorship, internships, and job placement support."
+>
+  <section class="academy-hero" aria-labelledby="academy-heading">
+    <div class="academy-container">
+      <div class="academy-label" data-animate="fade-up">Academy</div>
+      <h1 id="academy-heading" class="academy-title" data-animate="fade-up">
+        Career-Focused Training<br />
+        and <em>Support Program</em>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Program Details -->
+  <section class="academy-details" aria-labelledby="details-heading">
+    <div class="academy-container">
+      <h2 id="details-heading" class="academy-section-title" data-animate="fade-up">
+        Program Details
+      </h2>
+      <ul class="academy-details-list" data-animate="stagger">
+        {programDetails.map((d) => (
+          <li class="academy-detail-item">
+            <span class="academy-detail-check" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3.75 9l3.75 3.75 7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            {d}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Our Model: Flow Chart -->
+  <section class="academy-model" aria-labelledby="model-heading">
+    <div class="academy-container">
+      <div class="academy-label academy-label--centered" data-animate="fade-up">Our Model</div>
+      <h2 id="model-heading" class="academy-section-title academy-section-title--centered" data-animate="fade-up">
+        From Training to <em>Employment</em>
+      </h2>
+
+      <ol class="academy-flow" role="list">
+        {modelSteps.map((step, i) => (
+          <li class="academy-flow-step" data-animate="fade-up" data-delay={0.1 * i}>
+            <div class="academy-flow-num">{step.num}</div>
+            <h3 class="academy-flow-title">{step.title}</h3>
+            <p class="academy-flow-body">{step.body}</p>
+            {i < modelSteps.length - 1 && (
+              <div class="academy-flow-arrow" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="academy-skills" aria-labelledby="skills-heading">
+    <div class="academy-container">
+      <h2 id="skills-heading" class="academy-section-title academy-section-title--centered" data-animate="fade-up">
+        Skills for Career Success<br />and <em>Long-Term Growth</em>
+      </h2>
+
+      <div class="academy-skills-grid" data-animate="stagger">
+        {skillCategories.map((cat) => (
+          <div class="academy-skill-card">
+            <div class="academy-skill-icon" aria-hidden="true">
+              {cat.icon === 'briefcase' && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              )}
+              {cat.icon === 'trending' && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              )}
+              {cat.icon === 'user' && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              )}
+              {cat.icon === 'check' && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              )}
+            </div>
+            <h3 class="academy-skill-title">{cat.title}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Process -->
+  <section class="academy-apply" aria-labelledby="apply-heading">
+    <div class="academy-container">
+      <h2 id="apply-heading" class="academy-section-title academy-section-title--centered" data-animate="fade-up">
+        Application <em>Process</em>
+      </h2>
+
+      <ol class="academy-apply-steps" role="list">
+        {applicationSteps.map((step, i) => (
+          <li class="academy-apply-step" data-animate="fade-up" data-delay={0.1 * i}>
+            <div class="academy-apply-num">{step.num}</div>
+            <div class="academy-apply-label">{step.label}</div>
+            {i < applicationSteps.length - 1 && (
+              <div class="academy-apply-connector" aria-hidden="true"></div>
+            )}
+          </li>
+        ))}
+      </ol>
+
+      <div class="academy-apply-cta" data-animate="fade-up">
+        <a href="https://form.jotform.com/261187937401864" target="_blank" rel="noopener noreferrer" class="academy-cta-btn">
+          Apply Now
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M3.75 9h10.5M9.75 4.5L14.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .academy-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Hero ── */
+  .academy-hero {
+    background: var(--color-bg-warm);
+    padding: 8rem 0 5rem;
+  }
+
+  .academy-label {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+  }
+
+  .academy-label--centered {
+    text-align: center;
+  }
+
+  .academy-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-weight: 900;
+    color: var(--color-bg-dark);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+
+  .academy-title em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  .academy-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 700;
+    color: var(--color-bg-dark);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 3rem;
+  }
+
+  .academy-section-title--centered {
+    text-align: center;
+  }
+
+  .academy-section-title em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  /* ── Program Details ── */
+  .academy-details {
+    background: var(--color-bg-light-gray);
+    padding: 5rem 0;
+  }
+
+  .academy-details-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .academy-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1.25rem 1.5rem;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.625rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-bg-dark);
+    font-weight: 500;
+  }
+
+  .academy-detail-check {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(233, 173, 0, 0.15);
+    border-radius: 50%;
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  /* ── Model: Flow Chart ── */
+  .academy-model {
+    background: var(--color-bg-warm);
+    padding: 6rem 0;
+  }
+
+  .academy-flow {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .academy-flow-step {
+    position: relative;
+    padding: 2rem 1.5rem;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .academy-flow-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--color-gold);
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .academy-flow-title {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-bg-dark);
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+  }
+
+  .academy-flow-body {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .academy-flow-arrow {
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gold);
+    z-index: 2;
+    background: var(--color-bg-warm);
+    padding: 0.25rem;
+    border-radius: 50%;
+  }
+
+  /* ── Skills ── */
+  .academy-skills {
+    background: var(--color-bg-light-gray);
+    padding: 6rem 0;
+  }
+
+  .academy-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  .academy-skill-card {
+    padding: 2.5rem 1.5rem;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .academy-skill-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(233, 173, 0, 0.4);
+  }
+
+  .academy-skill-icon {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(233, 173, 0, 0.12);
+    border-radius: 50%;
+    color: var(--color-gold);
+    margin: 0 auto 1.25rem;
+  }
+
+  .academy-skill-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-bg-dark);
+    margin: 0;
+  }
+
+  /* ── Application Process ── */
+  .academy-apply {
+    background: var(--color-bg-warm);
+    padding: 6rem 0;
+  }
+
+  .academy-apply-steps {
+    list-style: none;
+    margin: 0 auto 3rem;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 860px;
+    position: relative;
+  }
+
+  .academy-apply-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .academy-apply-num {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(233, 173, 0, 0.3);
+  }
+
+  .academy-apply-label {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-bg-dark);
+  }
+
+  .academy-apply-connector {
+    position: absolute;
+    left: calc(100% + 0.5rem);
+    top: 1.75rem;
+    width: calc(100vw / 6);
+    max-width: 180px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold), rgba(233, 173, 0, 0.3));
+  }
+
+  .academy-apply-cta {
+    text-align: center;
+  }
+
+  .academy-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 1.125rem 2.5rem;
+    background: var(--color-gold);
+    color: var(--color-bg-dark);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 3rem;
+    box-shadow: 0 6px 20px rgba(233, 173, 0, 0.3);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+
+  .academy-cta-btn:hover {
+    background: #FFD040;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(233, 173, 0, 0.4);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .academy-flow {
+      grid-template-columns: 1fr;
+    }
+
+    .academy-flow-arrow {
+      position: static;
+      transform: rotate(90deg);
+      margin: 1rem auto 0;
+      display: block;
+      width: fit-content;
+    }
+
+    .academy-skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .academy-hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .academy-details,
+    .academy-model,
+    .academy-skills,
+    .academy-apply {
+      padding: 4rem 0;
+    }
+
+    .academy-apply-steps {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .academy-apply-connector {
+      display: none;
+    }
+
+    .academy-skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

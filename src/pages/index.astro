@@ -2,18 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Hero from '../components/home/Hero.astro'
 import MissionValues from '../components/home/MissionValues.astro'
-import WhatWeDo from '../components/home/WhatWeDo.astro'
+import WhoWeServe from '../components/home/WhoWeServe.astro'
+import ProblemSolution from '../components/home/ProblemSolution.astro'
 import ImpactStats from '../components/home/ImpactStats.astro'
 import DonateCTA from '../components/home/DonateCTA.astro'
 ---
 
 <BaseLayout
-  title="Adriana's Foundation — Shaping Future Leaders"
-  description="Adriana's Foundation empowers Latino youth and women through mentorship, education, and career development. Join us in building economic mobility for the next generation."
+  title="Adriana's Foundation — Free Training. Real Skills. Real Jobs. Real Futures."
+  description="Adriana's Foundation provides free, career-focused education for Latinos, women, and young adults—guiding students from training to employment through mentorship, internships, and job placement."
 >
-<Hero />
-<MissionValues />
-  <WhatWeDo />
+  <Hero />
+  <MissionValues />
+  <WhoWeServe />
+  <ProblemSolution />
   <ImpactStats />
   <DonateCTA />
 </BaseLayout>
