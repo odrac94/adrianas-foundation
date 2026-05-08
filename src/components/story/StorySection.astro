@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import storyImage from '../../assets/story-section.jpg'
+import storyImage from '../../assets/our-story.jpg'
 
 const transformations = [
   { from: 'Uncertainty', to: 'Confidence' },
@@ -28,7 +28,11 @@ const transformations = [
             src={storyImage}
             alt="Program participants at Adriana's Foundation"
             class="story-photo-img"
+            widths={[640, 960, 1200]}
+            sizes="(max-width: 1024px) 100vw, 540px"
             loading="lazy"
+            format="webp"
+            quality={85}
           />
         </div>
       </div>

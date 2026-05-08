@@ -5,7 +5,7 @@ export function buildNavItems(): NavItem[] {
     { label: 'Home', href: '/' },
     { label: 'Our Story', href: '/our-story' },
     { label: 'Academy', href: '/academy' },
-    { label: 'For Donors & Partners', href: '/donate' },
+    { label: 'Donors & Partners', href: '/donate' },
     { label: 'Contact Us', href: '/contact' }
   ]
 }

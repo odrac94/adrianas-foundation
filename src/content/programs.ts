@@ -1,14 +1,15 @@
 import type { Program } from '../types/index'
 import { slugify } from '../utils/slugify'
 
-import imgElevate from '../assets/programms/elevate-academy.jpg'
-import imgSoccer from '../assets/adrianas-soccer-academy.jpg'
-import imgCopa from '../assets/programms/annual-copa-adrianas-soccer-tournament.png'
-import imgSchool from '../assets/programms/annual-back-to-school-drive.jpg'
-import imgSanta from '../assets/programms/annual-santa-tour.jpg'
-import imgFestival from '../assets/programms/festival-de-la-familia-2.jpg'
-import imgFood from '../assets/programms/annual-food-drive.jpg'
-import imgPartners from '../assets/programms/global-community-partnerships.jpg'
+// Placeholder images from placehold.co using navy + gold palette
+const imgElevate = 'https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=AGLA+Academy'
+const imgSoccer = 'https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=Soccer+Academy'
+const imgCopa = 'https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=Copa+Adriana%27s'
+const imgSchool = 'https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=Back-to-School+Drive'
+const imgSanta = 'https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=Santa+Tour'
+const imgFestival = 'https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=Festival+de+La+Familia'
+const imgFood = 'https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=Food+Drive'
+const imgPartners = 'https://placehold.co/600x400/0A1F2D/E9AD00/jpg?text=Global+Partnerships'
 
 const programsData: Omit<Program, 'id'>[] = [
   {

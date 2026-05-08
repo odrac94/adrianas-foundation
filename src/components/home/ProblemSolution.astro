@@ -1,71 +1,135 @@
 ---
+import { Image } from 'astro:assets'
+import solutionImg from '../../assets/group-4.jpg'
+import problemImg from '../../assets/group-6.jpg'
 ---
 
-<section class="ps" aria-labelledby="ps-problem-heading">
-  <div class="ps-container">
+<section class="ps" aria-label="The problem and our solution">
 
-    <!-- Problem -->
-    <div class="ps-block ps-block--problem" data-animate="fade-up">
-      <div class="ps-eyebrow">The Problem</div>
-      <h2 id="ps-problem-heading" class="ps-heading">
-        Barriers to opportunity are holding back<br />
-        <em>career growth and stability</em>
-      </h2>
-      <p class="ps-body">
-        Too many Latinos, women, young adults, and single mothers are held back
-        not by lack of potential, but by limited access to affordable education,
-        professional networks, job training, and real employment
-        opportunities—barriers that prevent career growth and long-term stability.
-      </p>
-      <p class="ps-body ps-body--accent">
-        Adriana's Foundation exists to change that.
-      </p>
+  <!-- Problem -->
+  <div class="ps-block ps-block--problem">
+    <div class="ps-container">
+      <div class="ps-grid ps-grid--left">
+        <div class="ps-media" data-animate="fade-right">
+          <div class="ps-media-frame">
+            <Image
+              src={problemImg}
+              alt="Community members representing those facing barriers to opportunity"
+              class="ps-media-img"
+              width={720}
+              height={720}
+              loading="lazy"
+              format="webp"
+              quality={85}
+            />
+            <div class="ps-media-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="ps-media-badge ps-media-badge--problem" aria-hidden="true">
+            <span class="ps-media-badge-num">01</span>
+            <span class="ps-media-badge-label">The Problem</span>
+          </div>
+        </div>
+
+        <div class="ps-content" data-animate="fade-left" data-delay="0.1">
+          <div class="ps-eyebrow">The Problem</div>
+          <h2 class="ps-heading">
+            Barriers to opportunity are holding back
+            <em>career growth and stability</em>
+          </h2>
+          <p class="ps-body">
+            Too many Latinos, women, young adults, and single mothers are held back
+            not by lack of potential, but by limited access to affordable education,
+            professional networks, job training, and real employment
+            opportunities—barriers that prevent career growth and long-term stability.
+          </p>
+          <p class="ps-body ps-body--accent">
+            Adriana's Foundation exists to change that.
+          </p>
+        </div>
+      </div>
     </div>
-
-    <!-- Divider -->
-    <div class="ps-divider" aria-hidden="true">
-      <span class="ps-divider-line"></span>
-      <span class="ps-divider-dot"></span>
-      <span class="ps-divider-line"></span>
-    </div>
-
-    <!-- Solution -->
-    <div class="ps-block ps-block--solution" data-animate="fade-up">
-      <div class="ps-eyebrow ps-eyebrow--solution">Our Solution</div>
-      <h2 class="ps-heading">
-        We don't just educate.<br />
-        <em>We prepare students for real careers.</em>
-      </h2>
-      <p class="ps-body">
-        Our program combines foundational education, technical training,
-        mentorship, internships, and job placement support to help students
-        build long-term economic stability.
-      </p>
-      <a href="/academy" class="ps-cta">
-        Learn How It Works
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
-
   </div>
+
+  <!-- Solution -->
+  <div class="ps-block ps-block--solution">
+    <div class="ps-container">
+      <div class="ps-grid ps-grid--right">
+        <div class="ps-content" data-animate="fade-right" data-delay="0.1">
+          <div class="ps-eyebrow ps-eyebrow--solution">Our Solution</div>
+          <h2 class="ps-heading">
+            We don't just educate.
+            <em>We prepare students for real careers.</em>
+          </h2>
+          <p class="ps-body">
+            Our program combines foundational education, technical training,
+            mentorship, internships, and job placement support to help students
+            build long-term economic stability.
+          </p>
+          <a href="/academy" class="ps-cta">
+            Learn How It Works
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="ps-media" data-animate="fade-left">
+          <div class="ps-media-frame">
+            <Image
+              src={solutionImg}
+              alt="Students engaging in mentorship and career training"
+              class="ps-media-img"
+              width={720}
+              height={720}
+              loading="lazy"
+              format="webp"
+              quality={85}
+            />
+            <div class="ps-media-overlay ps-media-overlay--solution" aria-hidden="true"></div>
+          </div>
+          <div class="ps-media-badge ps-media-badge--solution" aria-hidden="true">
+            <span class="ps-media-badge-num">02</span>
+            <span class="ps-media-badge-label">Our Solution</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <style>
   .ps {
     background: var(--color-bg-light-gray);
-    padding: 6rem 0;
+  }
+
+  .ps-block {
+    padding: 5rem 0;
+  }
+
+  .ps-block--problem {
+    background: var(--color-bg-light-gray);
+  }
+
+  .ps-block--solution {
+    background: var(--color-bg-warm);
   }
 
   .ps-container {
-    max-width: 900px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
 
-  .ps-block {
-    text-align: center;
+  .ps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4.5rem;
+    align-items: center;
+  }
+
+  .ps-content {
+    min-width: 0;
   }
 
   .ps-eyebrow {
@@ -89,10 +153,10 @@
 
   .ps-heading {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    font-size: clamp(1.875rem, 3.5vw, 2.75rem);
     font-weight: 700;
     color: var(--color-bg-dark);
-    line-height: 1.15;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     margin: 0 0 1.5rem;
   }
@@ -108,48 +172,103 @@
 
   .ps-body {
     font-family: var(--font-body);
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     color: rgba(0, 0, 0, 0.7);
     line-height: 1.75;
-    margin: 0 auto 1rem;
-    max-width: 720px;
+    margin: 0 0 1rem;
   }
 
   .ps-body--accent {
     font-weight: 600;
     color: var(--color-terracotta);
-    font-size: 1.25rem;
-    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    margin-top: 1.25rem;
   }
 
-  .ps-divider {
+  /* Media */
+  .ps-media {
+    position: relative;
+  }
+
+  .ps-media-frame {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 5 / 6;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+  }
+
+  .ps-media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ps-media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 31, 45, 0) 40%,
+      rgba(10, 31, 45, 0.6) 100%
+    );
+    pointer-events: none;
+  }
+
+  .ps-media-overlay--solution {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 31, 45, 0) 40%,
+      rgba(233, 173, 0, 0.3) 100%
+    );
+  }
+
+  /* Floating badge on image */
+  .ps-media-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin: 4rem 0;
+    gap: 0.875rem;
+    padding: 0.875rem 1.25rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 0.625rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 2;
   }
 
-  .ps-divider-line {
-    display: block;
-    width: 4rem;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.2);
+  .ps-media-badge-num {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-gold);
+    letter-spacing: -0.02em;
+    line-height: 1;
   }
 
-  .ps-divider-dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: var(--color-gold);
+  .ps-media-badge--solution .ps-media-badge-num {
+    color: var(--color-terracotta);
   }
 
+  .ps-media-badge-label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-bg-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* Solution CTA */
   .ps-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1.5rem;
-    padding: 1rem 2rem;
+    margin-top: 1.25rem;
+    padding: 0.875rem 1.75rem;
     background: var(--color-gold);
     color: var(--color-bg-dark);
     font-family: var(--font-body);
@@ -167,17 +286,39 @@
     box-shadow: 0 8px 24px rgba(233, 173, 0, 0.35);
   }
 
+  @media (max-width: 900px) {
+    .ps-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    /* Put image first on both blocks in mobile */
+    .ps-grid--right .ps-content {
+      order: 2;
+    }
+
+    .ps-grid--right .ps-media {
+      order: 1;
+    }
+
+    .ps-media-frame {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
   @media (max-width: 640px) {
-    .ps {
-      padding: 4rem 0;
+    .ps-block {
+      padding: 3.5rem 0;
     }
 
-    .ps-divider {
-      margin: 3rem 0;
+    .ps-media-badge {
+      bottom: 1rem;
+      left: 1rem;
+      padding: 0.625rem 0.875rem;
     }
 
-    .ps-divider-line {
-      width: 2.5rem;
+    .ps-media-badge-num {
+      font-size: 1.25rem;
     }
   }
 </style>
