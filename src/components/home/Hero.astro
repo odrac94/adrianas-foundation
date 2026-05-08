@@ -1,134 +1,91 @@
 ---
 import { Image } from 'astro:assets'
-import img1 from '../../assets/hero/vertical-1.jpg'
-import img2 from '../../assets/hero/vertical-2.jpg'
-import img3 from '../../assets/hero/vertical-3.jpg'
-import img4 from '../../assets/hero/square-1.jpg'
-import img5 from '../../assets/hero/square-2.jpg'
-import img6 from '../../assets/hero/square-3.jpg'
-import img7 from '../../assets/hero/horizontal-1.jpg'
-import img8 from '../../assets/hero/horizontal-2.jpg'
-import img9 from '../../assets/hero/horizontal-3.jpg'
+import heroImg from '../../assets/hero/adrianas-foundation-hero.webp'
 
 interface Props {
-  headline?: string
+  eyebrow?: string
+  headlineLines?: string[]
+  accentWord?: string
   subheadline?: string
-  ctaLabel?: string
-  ctaHref?: string
+  primaryLabel?: string
+  primaryHref?: string
+  secondaryLabel?: string
+  secondaryHref?: string
 }
 
 const {
-  headline = 'SHAPING FUTURE LEADERS',
-  subheadline = 'Mentorship, training, and career pathways for the next generation of leaders.',
-  ctaLabel = 'Explore Our Programs',
-  ctaHref = '/programs-v2',
+  eyebrow = "Adriana's Foundation",
+  headlineLines = ['Free Training.', 'Real Skills.', 'Real Jobs.', 'Real '],
+  accentWord = 'Futures.',
+  subheadline = "Adriana's Foundation provides free, career-focused education for Latinos, women, and young adults—guiding students from training to employment through mentorship, internships, and job placement.",
+  primaryLabel = 'Apply for the Program',
+  primaryHref = '/academy',
+  secondaryLabel = 'Support Our Mission',
+  secondaryHref = '/donate',
 } = Astro.props
-
-// 2 images per cell, no repeats across cells
-// tall cell = vertical/portrait images
-// normal/wide cells = horizontal/square images
-const cells = [
-  {
-    images: [{ src: img1, alt: "Workshop" }, { src: img3, alt: 'Youth mentorship program' }, { src: img2, alt: 'Youth mentorship program' }],
-    span: 'tall',
-    fit: 'object-center'   // center all images
-  },
-  {
-    images: [{ src: img6, alt: 'Workshops' }, { src: img4, alt: 'Festival de La Familia' }, { src: img5, alt: 'Festival de La Familia' }],
-    span: 'normal',
-    fit: 'object-center'   // horizontal/square → center
-  },
-  {
-    images: [{ src: img8, alt: 'Back-to-School Drive' }, { src: img7, alt: 'Soccer Academy' }, { src: img9, alt: 'Soccer Academy' }],
-    span: 'normal',
-    fit: 'object-center'
-  },
-  {
-    images: [{ src: img7, alt: 'Food Drive' }, { src: img8, alt: 'Community event' }],
-    span: 'wide',
-    fit: 'object-center'
-  },
-]
 ---
 
 <section class="hero" aria-label="Hero">
-  <!-- Mesh gradient background -->
+  <!-- ── Background image ── -->
   <div class="hero-bg" aria-hidden="true">
-    <div class="hero-bg-mesh"></div>
-    <div class="hero-grain" style="background-image: url('/textures/grain.svg')"></div>
+    <Image
+      src={heroImg}
+      alt=""
+      class="hero-bg-img"
+      widths={[1280, 1600, 2000, 2560]}
+      sizes="100vw"
+      loading="eager"
+      format="webp"
+      quality={85}
+    />
+    <!-- Dark wash from left for text legibility -->
+    <div class="hero-wash" aria-hidden="true"></div>
+    <!-- Top gradient to blend with fixed navigation -->
+    <div class="hero-top-fade" aria-hidden="true"></div>
+    <!-- Grain overlay -->
+    <div class="hero-grain" style="background-image: url('/textures/grain.svg')" aria-hidden="true"></div>
   </div>
 
+  <!-- ── Content ── -->
   <div class="hero-inner">
+    <div class="hero-content">
 
-    <!-- ── Left: text ── -->
-    <div class="hero-text">
+      <!-- Eyebrow -->
       <div class="hero-eyebrow" aria-hidden="true">
         <span class="hero-eyebrow-line"></span>
-        <span class="hero-eyebrow-label">Adriana's Foundation</span>
+        <span class="hero-eyebrow-label">{eyebrow}</span>
       </div>
 
+      <!-- Headline -->
       <h1 class="hero-headline">
-        {headline.split(' ').map((word, i) => (
-          <span class="hero-word" style={`animation-delay: ${0.1 + i * 0.1}s`}>{word}</span>
+        {headlineLines.map((line, i) => (
+          <span class="hero-line" style={`animation-delay: ${0.15 + i * 0.12}s`}>
+            {line}
+            {i === headlineLines.length - 1 && (
+              <em class="hero-accent">{accentWord}</em>
+            )}
+          </span>
         ))}
       </h1>
 
+      <!-- Subheadline -->
       <p class="hero-subheadline">{subheadline}</p>
 
+      <!-- Actions -->
       <div class="hero-actions">
-        <a href={ctaHref} class="hero-cta-primary">
-          {ctaLabel}
+        <a href={primaryHref} class="hero-cta-primary">
+          <span>{primaryLabel}</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a
-          href="/donate"
-          class="hero-cta-secondary"
-        >
-          Donate Now
+        <a href={secondaryHref} class="hero-cta-secondary">
+          {secondaryLabel}
         </a>
       </div>
 
-
     </div>
-
-    <!-- ── Right: collage ── -->
-    <div class="hero-collage" aria-label="Foundation photo collage" role="img">
-      {cells.map((cell, cellIdx) => (
-        <div class={`collage-cell collage-cell--${cell.span}`}>
-          {cell.images.map((img, imgIdx) => {
-            const totalImages = cell.images.length
-            const cycleDur = totalImages * 6
-            const delay = imgIdx * 6 + cellIdx * 1.5
-            const isBase = imgIdx === 0
-            return (
-              <Image
-                src={img.src}
-                alt={img.alt}
-                class={`collage-img ${cell.fit} ${isBase ? 'collage-img--base' : ''}`}
-                style={isBase ? '' : `--delay: ${delay}s; --cycle: ${cycleDur}s; --count: ${totalImages}`}
-                width={800}
-                height={1000}
-                loading={cellIdx === 0 && imgIdx === 0 ? 'eager' : 'lazy'}
-                format="webp"
-                quality={90}
-              />
-            )
-          })}
-          <div class="collage-cell-overlay" aria-hidden="true"></div>
-        </div>
-      ))}
-
-      <!-- Floating decorative elements -->
-      <div class="collage-deco collage-deco--ring" aria-hidden="true"></div>
-      <div class="collage-deco collage-deco--dot" aria-hidden="true"></div>
-    </div>
-
   </div>
-
-  <!-- Bottom fade -->
-  <div class="hero-bottom-fade" aria-hidden="true"></div>
 </section>
 
 <style>
@@ -141,33 +98,68 @@ const cells = [
     padding-top: 4.5rem;
     overflow: hidden;
     background: var(--color-bg-dark);
+    isolation: isolate;
   }
 
-  /* ── Background mesh ── */
+  /* ── Background ── */
   .hero-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
 
-  .hero-bg-mesh {
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(0.9) contrast(1.02);
+  }
+
+  /* Strong wash from left → transparent right, plus subtle darken overall */
+  .hero-wash {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(154, 117, 6, 0.22) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 85% 80%, rgba(233, 173, 0, 0.15) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 50% at 10% 20%, rgba(233, 173, 0, 0.08) 0%, transparent 50%),
-      var(--color-bg-light-gray);
+      linear-gradient(
+        100deg,
+        var(--color-bg-dark) 0%,
+        rgba(10, 31, 45, 0.92) 28%,
+        rgba(10, 31, 45, 0.72) 48%,
+        rgba(10, 31, 45, 0.45) 68%,
+        rgba(10, 31, 45, 0.28) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(10, 31, 45, 0.25) 0%,
+        rgba(10, 31, 45, 0.15) 55%,
+        rgba(10, 31, 45, 0.35) 100%
+      );
+    pointer-events: none;
+  }
+
+  .hero-top-fade {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 8rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 31, 45, 0.85) 0%,
+      transparent 100%
+    );
+    pointer-events: none;
   }
 
   .hero-grain {
     position: absolute;
     inset: 0;
-    opacity: 0.3;
+    opacity: 0.18;
     background-repeat: repeat;
     background-size: 200px 200px;
-    pointer-events: none;
     mix-blend-mode: overlay;
+    pointer-events: none;
   }
 
   /* ── Layout ── */
@@ -176,20 +168,22 @@ const cells = [
     z-index: 2;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 4rem 1.5rem;
+    padding: 5rem 1.5rem 7rem;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 3rem;
-    align-items: center;
   }
 
-  /* ── Left: text ── */
+  .hero-content {
+    max-width: 620px;
+  }
+
+  /* ── Eyebrow ── */
   .hero-eyebrow {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.875rem;
     margin-bottom: 1.75rem;
+    opacity: 0;
+    animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
   }
 
   .hero-eyebrow-line {
@@ -201,254 +195,203 @@ const cells = [
 
   .hero-eyebrow-label {
     font-family: var(--font-body);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--color-gold);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
   }
 
+  /* ── Headline ── */
   .hero-headline {
     font-family: var(--font-display);
-    font-size: clamp(2.75rem, 5.5vw, 5.5rem);
+    font-size: clamp(2.75rem, 6vw, 5rem);
     font-weight: 900;
-    line-height: 0.93;
-    letter-spacing: -0.03em;
-    color: var(--color-bg-dark);
-    margin: 0 0 1.5rem;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    margin: 0 0 1.75rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.2em;
+    flex-direction: column;
+    gap: 0.1em;
   }
 
-  .hero-word {
-    display: inline-block;
+  .hero-line {
+    display: block;
     opacity: 0;
-    transform: translateY(24px) skewY(2deg);
-    animation: wordReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform: translateY(28px);
+    animation: heroLineReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  @keyframes wordReveal {
-    to { opacity: 1; transform: translateY(0) skewY(0deg); }
+  .hero-accent {
+    font-style: italic;
+    color: var(--color-gold);
+    margin-left: 0.1em;
   }
 
-  .hero-word:last-child { color: var(--color-gold); }
+  @keyframes heroLineReveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
 
+  @keyframes heroFadeIn {
+    to { opacity: 1; }
+  }
+
+  /* ── Subheadline ── */
   .hero-subheadline {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
-    color: var(--color-bg-dark);
+    font-size: clamp(1rem, 1.25vw, 1.125rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.78);
     line-height: 1.7;
     margin: 0 0 2.5rem;
-    max-width: 440px;
+    max-width: 520px;
+    opacity: 0;
+    animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
   }
 
+  /* ── Actions ── */
   .hero-actions {
     display: flex;
-    gap: 0.875rem;
+    gap: 1rem;
     flex-wrap: wrap;
     align-items: center;
+    opacity: 0;
+    animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
   }
 
   .hero-cta-primary {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
+    gap: 0.625rem;
+    padding: 1rem 1.75rem;
     background: var(--color-gold);
     color: var(--color-bg-dark);
     font-family: var(--font-body);
-    font-size: 0.9375rem;
+    font-size: 0.8125rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     text-decoration: none;
     border-radius: 3rem;
-    letter-spacing: 0.02em;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     box-shadow: 0 4px 16px rgba(233, 173, 0, 0.25);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
   }
 
   .hero-cta-primary:hover {
     background: #FFD040;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(233, 173, 0, 0.35);
+    box-shadow: 0 8px 24px rgba(233, 173, 0, 0.45);
+  }
+
+  .hero-cta-primary svg {
+    transition: transform 0.2s;
+  }
+
+  .hero-cta-primary:hover svg {
+    transform: translateX(3px);
   }
 
   .hero-cta-secondary {
     display: inline-flex;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 1.75rem;
     background: transparent;
-    color: var(--color-bg-dark);
+    color: #ffffff;
     font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-weight: 600;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     text-decoration: none;
-    border: 2px solid var(--color-bg-dark);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
     border-radius: 3rem;
     transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
   }
 
   .hero-cta-secondary:hover {
-    background: var(--color-bg-dark);
-    color: var(--color-gold);
-    border-color: var(--color-bg-dark);
+    background: #ffffff;
+    color: var(--color-bg-dark);
+    border-color: #ffffff;
     transform: translateY(-2px);
   }
 
-
-
-  /* ── Right: collage ── */
-  .hero-collage {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1.4fr 1fr;
-    gap: 0.625rem;
-    height: 560px;
-  }
-
-  /* Cell spans */
-  .collage-cell--tall {
-    grid-row: span 2;
-  }
-
-  .collage-cell--wide {
-    /* normal, fills its cell */
-  }
-
-  .collage-cell {
-    position: relative;
-    border-radius: 0.625rem;
-    overflow: hidden;
-    background: var(--color-terracotta);
-  }
-
-  /* Each image in a cell stacks and fades */
-  .collage-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0;
-    will-change: opacity;
-  }
-
-  /* Base image: always visible as fallback */
-  .collage-img.collage-img--base {
-    opacity: 1;
-    z-index: 0;
-  }
-
-  /* Animated images: crossfade on top of base */
-  .collage-img:not(.collage-img--base) {
-    z-index: 1;
-    animation: collageCrossfade var(--cycle) ease-in-out infinite var(--delay);
-  }
-
-  /* Object position helpers */
-  .collage-img.object-top    { object-position: top center; }
-  .collage-img.object-center { object-position: center; }
-  .collage-img.object-bottom { object-position: bottom center; }
-
-  @keyframes collageCrossfade {
-    0%    { opacity: 0; }
-    5%    { opacity: 1; }
-    33%   { opacity: 1; }
-    38%   { opacity: 0; }
-    100%  { opacity: 0; }
-  }
-
-  /* Per-cell gradient overlay — creates depth + brand feel */
-  .collage-cell-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background: linear-gradient(
-      135deg,
-      rgba(10, 31, 45, 0.25) 0%,
-      transparent 50%,
-      rgba(233, 173, 0, 0.08) 100%
-    );
-  }
-
-  /* Tall cell gets stronger bottom fade */
-  .collage-cell--tall .collage-cell-overlay {
-    background: linear-gradient(
-      to bottom,
-      transparent 50%,
-      rgba(10, 31, 45, 0.5) 100%
-    );
-  }
-
-  /* Decorative floating elements */
-  .collage-deco {
-    position: absolute;
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .collage-deco--ring {
-    width: 5rem;
-    height: 5rem;
-    border: 1.5px solid rgba(233, 173, 0, 0.4);
-    border-radius: 50%;
-    top: -1.5rem;
-    right: -1.5rem;
-    animation: rotateSlow 20s linear infinite;
-  }
-
-  .collage-deco--dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    background: var(--color-gold);
-    border-radius: 50%;
-    bottom: 1.5rem;
-    left: -0.75rem;
-    box-shadow: 0 0 12px rgba(233, 173, 0, 0.6);
-    animation: pulseDot 3s ease-in-out infinite;
-  }
-
-  @keyframes rotateSlow {
-    to { transform: rotate(360deg); }
-  }
-
-  @keyframes pulseDot {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.5); opacity: 1; }
-  }
-
-  /* ── Bottom fade into next section ── */
-  .hero-bottom-fade {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 8rem;
-    background: linear-gradient(to bottom, transparent, var(--color-bg-light-gray));
-    z-index: 3;
-    pointer-events: none;
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow,
+    .hero-line,
+    .hero-subheadline,
+    .hero-actions {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
   }
 
   /* ── Responsive ── */
   @media (max-width: 1024px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
+    .hero-bg-img {
+      object-position: 70% center;
     }
 
-    .hero-collage {
-      height: 380px;
-      order: -1;
+    .hero-wash {
+      background:
+        linear-gradient(
+          100deg,
+          var(--color-bg-dark) 0%,
+          rgba(10, 31, 45, 0.94) 40%,
+          rgba(10, 31, 45, 0.78) 60%,
+          rgba(10, 31, 45, 0.5) 100%
+        );
     }
   }
 
-  @media (max-width: 640px) {
-    .hero-collage {
-      height: 280px;
-      gap: 0.375rem;
+  @media (max-width: 768px) {
+    .hero-inner {
+      padding: 4rem 1.25rem 6rem;
+    }
+
+    .hero-content {
+      max-width: 100%;
+    }
+
+    .hero-bg-img {
+      object-position: 75% center;
+    }
+
+    .hero-wash {
+      background: linear-gradient(
+        180deg,
+        rgba(10, 31, 45, 0.92) 0%,
+        rgba(10, 31, 45, 0.78) 50%,
+        rgba(10, 31, 45, 0.6) 100%
+      );
+    }
+
+    .hero-headline {
+      font-size: clamp(2.25rem, 9vw, 3.5rem);
+    }
+
+    .hero-actions {
+      gap: 0.75rem;
+    }
+
+    .hero-cta-primary,
+    .hero-cta-secondary {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero-cta-primary,
+    .hero-cta-secondary {
+      justify-content: center;
     }
   }
 </style>

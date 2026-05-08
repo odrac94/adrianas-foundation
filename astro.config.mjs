@@ -10,5 +10,10 @@ export default defineConfig({
     service: {
       entrypoint: 'astro/assets/services/sharp'
     }
+  },
+  vite: {
+    server: {
+      allowedHosts: ['.ngrok-free.dev', '.ngrok-free.app', '.ngrok.io']
+    }
   }
 })

@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import storyImage from '../../assets/story-section.jpg'
+import storyImage from '../../assets/our-story.jpg'
 
 const transformations = [
   { from: 'Uncertainty', to: 'Confidence' },
@@ -28,20 +28,28 @@ const transformations = [
             src={storyImage}
             alt="Program participants at Adriana's Foundation"
             class="story-photo-img"
+            widths={[640, 960, 1200]}
+            sizes="(max-width: 1024px) 100vw, 540px"
             loading="lazy"
+            format="webp"
+            quality={85}
           />
         </div>
       </div>
 
       <!-- Right: content -->
       <div class="story-right" data-animate="fade-left" data-delay="0.15">
+        <div class="story-subheading">Created from lived experience</div>
         <p class="story-text">
-          Adriana's Foundation empowers Latino youth and women with the skills, mentorship,
-          and opportunities needed to build meaningful careers and achieve economic mobility.
+          Adriana's Foundation was built from lived experience and a clear
+          understanding of the barriers many Latinos, young adults, and single
+          mothers face: uncertainty, limited access, and unclear paths forward.
         </p>
         <p class="story-text">
-          Through mentorship, life-skills training, certifications, and job placement,
-          we prepare participants to succeed in today's workforce.
+          Our approach goes beyond traditional education by connecting
+          participants to practical training, industry-recognized certifications,
+          and direct employment opportunities—creating a clear, supported pathway
+          toward stable careers and long-term economic mobility.
         </p>
 
         <!-- Transformation cards -->
@@ -146,6 +154,16 @@ const transformations = [
   .story-heading em {
     font-style: italic;
     color: var(--color-terracotta);
+  }
+
+  .story-subheading {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.25rem;
   }
 
   .story-text {

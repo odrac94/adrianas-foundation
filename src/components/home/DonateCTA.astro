@@ -1,7 +1,4 @@
 ---
-import { Image } from 'astro:assets'
-import donateImage from '../../assets/donate-cta.png'
-
 interface Props {
   stripeUrl?: string
 }
@@ -77,15 +74,6 @@ const { stripeUrl = '/donate' } = Astro.props
         </div>
       </div>
 
-      <!-- Impact photo -->
-      <div class="donate-ways-photo">
-        <Image
-          src={donateImage}
-          alt="Families served by Adriana's Foundation"
-          class="donate-ways-photo-img"
-          loading="lazy"
-        />
-      </div>
     </div>
 
   </div>
@@ -252,21 +240,6 @@ const { stripeUrl = '/donate' } = Astro.props
   }
 
   .donate-way-link:hover { color: var(--color-terracotta); }
-
-  .donate-ways-photo {
-    border-radius: 0.625rem;
-    overflow: hidden;
-    margin-top: 0.5rem;
-  }
-
-  .donate-ways-photo-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    opacity: 1;
-  }
 
   @media (max-width: 1024px) {
     .donate-container {

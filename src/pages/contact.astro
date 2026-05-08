@@ -47,88 +47,99 @@ const categoryIcons: Record<string, string> = {
   <section class="contact-page" aria-labelledby="contact-heading">
     <div class="contact-page-container">
 
-      <!-- Header -->
-      <div class="contact-page-header">
-        <div class="contact-page-label" aria-hidden="true">Get In Touch</div>
-        <h1 id="contact-heading" class="contact-page-heading">
-          We'd love to<br />
-          hear from you
-        </h1>
-        <p class="contact-page-subheading">
-          Reach out with any questions, opportunities to get involved,
-          or ways to support our mission.
-        </p>
+      <!-- Hero + Form (side by side on desktop) -->
+      <div class="contact-hero-grid">
+        <div class="contact-page-header">
+          <div class="contact-page-label" aria-hidden="true">Get In Touch</div>
+          <h1 id="contact-heading" class="contact-page-heading">
+            We'd love to<br />
+            hear from you
+          </h1>
+          <p class="contact-page-subheading">
+            Leave your information and we'll reach out about volunteer
+            opportunities, events, and ways to make an impact.
+          </p>
+          <p class="contact-page-helper">
+            Have a specific question? Find the right team below.
+          </p>
+        </div>
+
+        <!-- Get Involved Form — moved to top -->
+        <div class="contact-form-section" data-animate="fade-up">
+          <div class="contact-form-embed">
+            <iframe
+              id="JotFormIFrame-261187937401864"
+              title="Get Involved Form"
+              src="https://form.jotform.com/261187937401864?isIframeEmbed=1&background=FFFFFF"
+              style="min-width:100%;max-width:100%;border:none;"
+              scrolling="no"
+              allow="geolocation; microphone; camera; fullscreen"
+            ></iframe>
+          </div>
+          <script is:inline>
+            // Auto-resize JotForm iframe
+            window.addEventListener('message', function(e) {
+              if (typeof e.data === 'object') return;
+              var args = e.data.split(':');
+              if (args.length > 2) {
+                var iframe = document.getElementById('JotFormIFrame-' + args[args.length - 1]);
+                if (!iframe) return;
+                switch (args[0]) {
+                  case 'setHeight':
+                    iframe.style.height = args[1] + 'px';
+                    break;
+                  case 'scrollIntoView':
+                    iframe.scrollIntoView();
+                    break;
+                }
+              }
+            });
+          </script>
+        </div>
       </div>
 
       <!-- Contact categories grid -->
-      <div class="contact-grid" aria-label="Contact categories">
-        {contactEntries.map((entry) => (
-          <ContactCategory
-            entry={entry}
-            iconHtml={categoryIcons[entry.category] ?? ''}
-          />
-        ))}
+      <div class="contact-categories-section">
+        <div class="contact-categories-header">
+          <div class="contact-categories-label" aria-hidden="true">Direct Contact</div>
+          <h2 class="contact-categories-heading">Reach the right team</h2>
+        </div>
+        <div class="contact-grid" aria-label="Contact categories">
+          {contactEntries.map((entry) => (
+            <ContactCategory
+              entry={entry}
+              iconHtml={categoryIcons[entry.category] ?? ''}
+            />
+          ))}
+        </div>
       </div>
 
-      <!-- Get Involved Form -->
-      <div class="contact-form-section" data-animate="fade-up">
-        <div class="contact-form-header">
-          <div class="contact-form-label" aria-hidden="true">Get Involved</div>
-          <h2 class="contact-form-heading">Join our community</h2>
-          <p class="contact-form-subtext">
-            Leave your information and we'll reach out about volunteer opportunities,
-            events, and ways to make an impact.
-          </p>
-        </div>
-
-        <div class="contact-form-embed">
-          <iframe
-            id="JotFormIFrame-261187937401864"
-            title="Get Involved Form"
-            src="https://form.jotform.com/261187937401864?isIframeEmbed=1&background=FFFFFF"
-            style="min-width:100%;max-width:100%;border:none;"
-            scrolling="no"
-            allow="geolocation; microphone; camera; fullscreen"
-          ></iframe>
-        </div>
-        <script is:inline>
-          // Auto-resize JotForm iframe
-          window.addEventListener('message', function(e) {
-            if (typeof e.data === 'object') return;
-            var args = e.data.split(':');
-            if (args.length > 2) { 
-              var iframe = document.getElementById('JotFormIFrame-' + args[args.length - 1]);
-              if (!iframe) return;
-              switch (args[0]) {
-                case 'setHeight':
-                  iframe.style.height = args[1] + 'px';
-                  break;
-                case 'scrollIntoView':
-                  iframe.scrollIntoView();
-                  break;
-              }
-            }
-          });
-        </script>
-      </div>
-
-      <!-- Give Today CTA -->
+      <!-- CTA -->
       <div class="contact-donate">
         <div class="contact-donate-content">
-          <h2 class="contact-donate-heading">Ready to make an impact?</h2>
+          <h2 class="contact-donate-heading">Ready to build a better future?</h2>
           <p class="contact-donate-text">
-            Your support goes directly to programs that transform lives in our community.
+            Whether you are a student, donor, employer, or community partner,
+            you can be part of the pathway from training to employment.
           </p>
         </div>
-        <a
-          href="/donate"
-          class="contact-donate-btn"
-        >
-          Give Today
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <div class="contact-donate-actions">
+          <a
+            href="/academy"
+            class="contact-donate-btn"
+          >
+            Apply for the Program
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a
+            href="/donate"
+            class="contact-donate-btn-secondary"
+          >
+            Support Adriana's Foundation
+          </a>
+        </div>
       </div>
 
     </div>
@@ -148,9 +159,19 @@ const categoryIcons: Record<string, string> = {
     padding: 0 1.5rem;
   }
 
+  /* Hero grid — text + form side by side */
+  .contact-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 5rem;
+  }
+
   .contact-page-header {
-    margin-bottom: 4rem;
-    max-width: 600px;
+    max-width: 520px;
+    position: sticky;
+    top: 6rem;
   }
 
   .contact-page-label {
@@ -165,7 +186,7 @@ const categoryIcons: Record<string, string> = {
 
   .contact-page-heading {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
     color: var(--color-bg-dark);
     line-height: 1;
@@ -176,21 +197,107 @@ const categoryIcons: Record<string, string> = {
   .contact-page-subheading {
     font-family: var(--font-body);
     font-size: 1.125rem;
-    color: rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.7);
     line-height: 1.7;
+    margin: 0 0 1rem;
+  }
+
+  .contact-page-helper {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 1.6;
     margin: 0;
+  }
+
+  /* Categories section */
+  .contact-categories-section {
+    margin-bottom: 4rem;
+  }
+
+  .contact-categories-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .contact-categories-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.625rem;
+  }
+
+  .contact-categories-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-bg-dark);
+    margin: 0;
+    line-height: 1.15;
   }
 
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    margin-bottom: 4rem;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1rem;
   }
 
-  /* Last item (Programs) spans full width if odd count */
-  .contact-grid > :last-child:nth-child(odd) {
-    grid-column: span 2;
+  /* :global() is required because <ContactCategory> children have their own
+     scoped CSS hash — without it, :nth-child selectors won't match. */
+
+  /* Row 1 — 3 items across 6 columns, each spanning 2 */
+  .contact-grid > :global(:nth-child(1)) {
+    grid-column: span 2 / span 2;
+  }
+  .contact-grid > :global(:nth-child(2)) {
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+  }
+  .contact-grid > :global(:nth-child(3)) {
+    grid-column: span 2 / span 2;
+    grid-column-start: 5;
+  }
+
+  /* Row 2 — 2 items centered (columns 2-3 and 4-5) */
+  .contact-grid > :global(:nth-child(4)) {
+    grid-column: span 2 / span 2;
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+  .contact-grid > :global(:nth-child(5)) {
+    grid-column: span 2 / span 2;
+    grid-column-start: 4;
+    grid-row-start: 2;
+  }
+
+  @media (max-width: 1024px) {
+    .contact-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-page-header {
+      position: static;
+      max-width: 100%;
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+
+    .contact-grid > :global(:nth-child(1)),
+    .contact-grid > :global(:nth-child(2)),
+    .contact-grid > :global(:nth-child(3)),
+    .contact-grid > :global(:nth-child(4)),
+    .contact-grid > :global(:nth-child(5)) {
+      grid-column: auto;
+      grid-row: auto;
+    }
   }
 
   /* Donate CTA */
@@ -232,7 +339,7 @@ const categoryIcons: Record<string, string> = {
     font-size: 0.9375rem;
     font-weight: 700;
     text-decoration: none;
-    border-radius: 0.375rem;
+    border-radius: 3rem;
     white-space: nowrap;
     transition: background 0.2s, transform 0.15s;
   }
@@ -242,58 +349,60 @@ const categoryIcons: Record<string, string> = {
     transform: translateY(-1px);
   }
 
+  .contact-donate-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: var(--color-bg-dark);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--color-bg-dark);
+    border-radius: 3rem;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .contact-donate-btn-secondary:hover {
+    background: var(--color-bg-dark);
+    color: var(--color-gold);
+    transform: translateY(-1px);
+  }
+
+  .contact-donate-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
   @media (max-width: 768px) {
     .contact-grid { grid-template-columns: 1fr; margin-bottom: 20px;}
-    .contact-grid > :last-child:nth-child(odd) { grid-column: span 1; }
+    .contact-grid > :global(:nth-child(1)),
+    .contact-grid > :global(:nth-child(2)),
+    .contact-grid > :global(:nth-child(3)),
+    .contact-grid > :global(:nth-child(4)),
+    .contact-grid > :global(:nth-child(5)) {
+      grid-column: auto;
+      grid-row: auto;
+    }
     .contact-donate { flex-direction: column; align-items: flex-start; }
   }
 
   /* Get Involved Form */
   .contact-form-section {
-    margin-bottom: 4rem;
-    padding: 3rem;
-    background: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 0.75rem;
+    border-radius: 1rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
   }
 
   @media (max-width: 768px) {
     .contact-form-section {
       padding: 1.25rem;
-      margin-bottom: 20px;
     }
-  }
-
-  .contact-form-header {
-    margin-bottom: 2rem;
-  }
-
-  .contact-form-label {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-terracotta);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 0.75rem;
-  }
-
-  .contact-form-heading {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 700;
-    color: var(--color-bg-dark);
-    margin: 0 0 0.75rem;
-    line-height: 1.2;
-  }
-
-  .contact-form-subtext {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    color: rgba(0, 0, 0, 0.55);
-    line-height: 1.6;
-    margin: 0;
-    max-width: 520px;
   }
 
   .contact-form-embed {
@@ -303,5 +412,12 @@ const categoryIcons: Record<string, string> = {
 
   .contact-form-embed iframe {
     display: block;
+    min-height: 432px;
+  }
+
+  @media (max-width: 768px) {
+    .contact-form-embed iframe {
+      min-height: 556px;
+    }
   }
 </style>

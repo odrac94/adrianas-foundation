@@ -1,0 +1,161 @@
+HOME
+Hero Section
+Hero Image: Incorporate Image of people from V1 website
+Headline:
+Free Training. Real Skills. Real Jobs. Real Futures.
+Sub headline:
+Adriana’s Foundation provides free, career-focused education for Latinos, women, and young
+adults—guiding students from training to employment through mentorship, internships, and job
+placement.
+Primary Button:
+Apply for the Program
+Secondary Button:
+Support Our Mission
+-------
+
+Mission
+Adriana’s Foundation develops confident, career-ready leaders by providing free, career-focused
+education, mentorship, and real-world experience, guiding Latinos, women, and young adults
+from training to employment and long-term economic stability.
+
+Vision
+We envision a future where underserved communities—especially Latinos, women, and young
+adults—have equitable access to high-quality career education, meaningful employment, and the
+tools to thrive in an evolving workforce, unlocking economic mobility and driving generational
+change.
+
+Who We Serve
+Built for the people who need opportunity most.
+Body:
+Adriana’s Foundation serves underserved communities, with a focus on Latinos, women, young
+adults, and single mothers who are ready to learn, grow, and build a better future.
+
+What We Do will turn into the following:
+Big Headline: The Problem
+Sub Headline:
+Barriers to Opportunity Are Holding Back Career Growth and Stability
+Body:
+Too many Latinos, women, young adults, and single mothers are held back not by lack of
+potential, but by limited access to affordable education, professional networks, job training, and
+real employment opportunities, barriers that prevent career growth and long-term stability
+Adriana’s Foundation exists to change that
+Big Headline: Our Solution
+Sub Headline:
+We don’t just educate. We prepare students for real careers
+Body:
+Our program combines foundational education, technical training, mentorship, internships, and
+job placement support to help students build long-term economic stability
+Button:
+Learn How It Works (Takes them to a new tab labeled “Academy”)
+
+Academy Tab:
+Headline:
+Career-Focused Training and Support Program
+
+Heading:
+Program Details:
+6-week foundational training
+Certified Courses
+Small cohorts of 10 students per class
+
+Career-specific training pathways
+Mentorship included
+Internship opportunities
+Job placement support
+Headline:
+Our Model: From Training to Employment
+Body:
+Step 1: Career Clarity
+Students identify their strengths and choose a clear career path aligned with market demand.
+
+Step 2: Real-World Skills
+Students learn professional skills like communication, emotional intelligence, and workplace
+readiness, along with technical training for high-demand careers.
+
+Step 3: Work Experience
+Students gain hands-on experience through internships, mentorship, and real-world exposure.
+
+Step 4: Job Placement
+We support students in securing employment and launching a sustainable career path.
+*** the above content should be organized in a horizontal flow chart similar to this:
+
+Section under the above
+Headline:
+Skills for Career Success and Long-Term Growth
+Categories:
+Professional Skills
+Career Development
+Personal Development
+Workforce Readiness
+
+Section under the above
+Headline: Application Process
+***Use this graphic as an example, you do not need to replicate exactly but use the same
+content, graphic should have moment upon initial loading of page
+
+Button:
+
+Apply Now
+-----
+
+Our Story
+Sub Headline:
+Created from lived experience
+
+Body:
+Adriana’s Foundation was built from lived experience and a clear understanding of the barriers
+many Latinos, young adults, and single mothers face; uncertainty, limited access, and unclear
+paths forward.
+Our approach goes beyond traditional education by connecting participants to practical training,
+industry-recognized certifications, and direct employment opportunities—creating a clear,
+supported pathway toward stable careers and long-term economic mobility.
+--------
+
+Programming
+** Remove all programming tab and content-programming turns into Academy tab
+---------
+
+Donate tab turns into: For Donors & Partners
+Headline:
+Join Us in Turning Education into Employment
+Body:
+Your support helps provide free training, mentorship, internships, and job placement services for
+students ready to transform their future.
+Donation amount section copy should be changed to only focus on AGLA & Student support
+
+Headline:
+Ways to Support:
+Cover Student Supplies
+
+Sponsor a student
+Fund a cohort
+Become an employer partner
+Provide mentorship
+Support program operations
+
+Button:
+Partner With Us (Prompts to send an email and details to partnerships@adrianasfoundation.org)
+
+Secondary Button:
+Donate Now (Takes them to donation amount section)
+
+-----------
+
+Contact us
+** Stays the same**
+Add under contacts:
+Headline:
+Ready to build a better future?
+
+Body:
+Whether you are a student, donor, employer, or community partner, you can be part of the
+pathway from training to employment.
+
+Primary Button:
+Apply for the Program
+
+Secondary Button:
+
+Support Adriana’s Foundation (Takes you to donors & partners tab)
+
+

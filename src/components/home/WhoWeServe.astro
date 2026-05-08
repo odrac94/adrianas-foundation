@@ -1,0 +1,192 @@
+---
+// Placeholders generated from placehold.co using the design system's navy + gold palette
+const groups = [
+  { img: '/../src/assets/group-1.jpg', label: 'Latinos' },
+  { img: '/../src/assets/group-2.jpg', label: 'Women' },
+  { img: '/../src/assets/group-3.jpg', label: 'Young adults' }
+]
+---
+
+<section class="wws" aria-labelledby="wws-heading">
+  <div class="wws-container">
+
+    <div class="wws-layout">
+      <!-- Text column -->
+      <div class="wws-text" data-animate="fade-right">
+        <div class="wws-label">Who We Serve</div>
+        <h2 id="wws-heading" class="wws-heading">
+          Built for the people who need<br />
+          <em>opportunity</em> most
+        </h2>
+        <p class="wws-body">
+          Adriana's Foundation serves underserved communities, with a focus on
+          Latinos, women, young adults, and single mothers who are ready to learn,
+          grow, and build a better future.
+        </p>
+
+        <ul class="wws-groups" role="list">
+          {groups.map((g) => (
+            <li class="wws-group-tag">
+              <span class="wws-group-dot" aria-hidden="true"></span>
+              {g.label}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Photo collage -->
+      <div class="wws-collage" aria-hidden="true" data-animate="fade-left" data-delay="0.15">
+        {groups.map((g, i) => (
+          <div class={`wws-collage-cell wws-collage-cell--${i + 1}`}>
+            <img
+              src={g.img}
+              alt={`Community member representing ${g.label}`}
+              class="wws-collage-img"
+              width="400"
+              height="400"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .wws {
+    background: var(--color-bg-light-gray);
+    padding: 6rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .wws-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .wws-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .wws-label {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+  }
+
+  .wws-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 700;
+    color: var(--color-bg-dark);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .wws-heading em {
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  .wws-body {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.75;
+    margin: 0 0 2rem;
+  }
+
+  .wws-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .wws-group-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(233, 173, 0, 0.1);
+    border: 1px solid rgba(233, 173, 0, 0.25);
+    border-radius: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-bg-dark);
+  }
+
+  .wws-group-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-gold);
+    border-radius: 50%;
+  }
+
+  /* Collage — asymmetric grid for visual interest */
+  .wws-collage {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.75rem;
+    aspect-ratio: 4 / 3;
+    max-width: 520px;
+    justify-self: end;
+    width: 100%;
+  }
+
+  .wws-collage-cell {
+    overflow: hidden;
+    border-radius: 0.75rem;
+    position: relative;
+  }
+
+  .wws-collage-cell--1 {
+    grid-row: span 2;
+    border-radius: 0.75rem;
+  }
+
+  .wws-collage-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .wws-collage-cell:hover .wws-collage-img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 900px) {
+    .wws-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .wws-collage {
+      max-width: 100%;
+      justify-self: stretch;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .wws {
+      padding: 4rem 0;
+    }
+  }
+</style>
